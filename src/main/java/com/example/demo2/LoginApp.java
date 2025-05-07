@@ -6,15 +6,20 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class LoginApp extends Application {
+
+
     @Override
-    public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("loginView.fxml"));
-        Parent root = loader.load();          // ← returnerar Parent
-        stage.setTitle("Demo‑inloggning");
-        stage.setScene(new Scene(root));      // tar storlek från FXML
+    public void start(Stage stage) throws IOException {
+        NavigationService.init(stage);
+        // byt ut mot frontView.fxml eller loginView.fxml
+        NavigationService.navigateTo("frontView.fxml");
+        stage.setTitle("Bibliotekssök");
         stage.show();
     }
+
 
     public static void main(String[] args) {
         launch(args);

@@ -54,11 +54,8 @@ public class RegisterController {
     @FXML
     private void onGoToLogin(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(
-                    getClass().getResource("loginView.fxml")
-            );
-            Stage stage = (Stage) loginButton.getScene().getWindow();
-            stage.setScene(new Scene(root));
+            NavigationService.navigateTo("loginView.fxml");
+
         } catch (Exception e) {
             e.printStackTrace();
             new Alert(Alert.AlertType.ERROR,
@@ -66,4 +63,9 @@ public class RegisterController {
                     .showAndWait();
         }
     }
+    @FXML
+    private void goBack() {
+        NavigationService.goBack();
+    }
+
 }

@@ -3,9 +3,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Label?>
 
+<?import javafx.scene.control.Button?>
+
+
 <VBox xmlns="http://javafx.com/javafx/17.0.6"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.example.demo2.MainController"
       alignment="CENTER" spacing="20">
     <Label text="Du är inloggad 🎉" style="-fx-font-size:18;"/>
+
+    <Button text="← Tillbaka"
+            layoutX="10" layoutY="10"
+            onAction="#goBack" />
+
 </VBox>

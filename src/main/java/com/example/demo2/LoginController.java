@@ -1,8 +1,10 @@
 package com.example.demo2;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
+import javafx.scene.Node;
 import javafx.scene.Parent;        // lägg till
 import javafx.scene.Scene;         // lägg till
 import javafx.stage.Stage;
@@ -35,11 +37,8 @@ public class LoginController {
     }
 
     @FXML private void onRegister()      { try {
-        Parent root = new FXMLLoader(
-                getClass().getResource("registerView.fxml"))
-                .load();
-        Stage stage = (Stage) emailField.getScene().getWindow();
-        stage.setScene(new Scene(root));
+        NavigationService.navigateTo("registerView.fxml");
+
     } catch (Exception e) {
         e.printStackTrace();
         alert("Kunde inte ladda registreringssidan.");
@@ -48,17 +47,21 @@ public class LoginController {
 
     private void switchToMainView() {
         try {
-            Parent root = new FXMLLoader(
-                    getClass().getResource("MainView.fxml")).load();
-            Stage stage = (Stage) emailField.getScene().getWindow();
-            stage.setScene(new Scene(root));
+            NavigationService.navigateTo("loginView.fxml");
+
         } catch (Exception e) {
             e.printStackTrace();
             alert("Kunde inte ladda nästa vy.");
         }
     }
+    @FXML
+    private void goBack() {
+        NavigationService.goBack();
+    }
+
 
     private void alert(String msg) {
         new Alert(Alert.AlertType.INFORMATION, msg).showAndWait();
     }
+
 }

@@ -27,4 +27,9 @@
             GridPane.rowIndex="5" GridPane.columnIndex="0"/>
     <Button text="Registrera" onAction="#onRegister"
             GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+    <Button text="← Tillbaka"
+            layoutX="10" layoutY="10"
+            onAction="#goBack" />
+
 </GridPane>

@@ -31,6 +31,11 @@
                         text="Gå till inloggning"
                         onAction="#onGoToLogin"
                         visible="false" />
+
+                <Button text="← Tillbaka"
+                        layoutX="10" layoutY="10"
+                        onAction="#goBack" />
+
             </children>
         </VBox>
     </children>
