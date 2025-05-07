@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+
+<GridPane fx:controller="com.example.demo2.LoginController"
+          xmlns:fx="http://javafx.com/fxml/1"
+          xmlns="http://javafx.com/javafx/17.0.6"
+          hgap="10" vgap="12" alignment="CENTER">
+    <padding><Insets top="25" right="25" bottom="25" left="25"/></padding>
+
+    <Label text="Välkommen" style="-fx-font-size:20;-fx-font-weight:bold;" GridPane.columnSpan="2"/>
+    <Label text="Logga in" style="-fx-font-size:14;-fx-font-weight:bold;" GridPane.rowIndex="1" GridPane.columnSpan="2"/>
+
+    <TextField fx:id="emailField" promptText="E‑postadress"
+               GridPane.rowIndex="2" GridPane.columnSpan="2"/>
+    <PasswordField fx:id="passwordField" promptText="Lösenord"
+                   GridPane.rowIndex="3" GridPane.columnSpan="2"/>
+
+    <Hyperlink text="Glömt lösenord?" onAction="#onForgotPassword"
+               GridPane.rowIndex="4" GridPane.columnIndex="1"
+               GridPane.halignment="RIGHT"/>
+
+    <Button text="Logga in" defaultButton="true"
+            onAction="#onLogin"
+            GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+    <Button text="Registrera" onAction="#onRegister"
+            GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+</GridPane>
