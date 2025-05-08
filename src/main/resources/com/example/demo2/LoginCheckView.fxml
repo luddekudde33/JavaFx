@@ -8,7 +8,7 @@
 
 <VBox xmlns="http://javafx.com/javafx/17.0.6"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.demo2.MainController"
+      fx:controller="com.example.demo2.controller.LoginCheckController"
       alignment="CENTER" spacing="20">
     <Label text="Du är inloggad 🎉" style="-fx-font-size:18;"/>
 

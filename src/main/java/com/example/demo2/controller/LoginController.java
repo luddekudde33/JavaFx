@@ -1,13 +1,9 @@
-package com.example.demo2;
+package com.example.demo2.controller;
 
-import javafx.event.ActionEvent;
+import com.example.demo2.NavigationService;
+import com.example.demo2.UserDao;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 
-import javafx.scene.Node;
-import javafx.scene.Parent;        // lägg till
-import javafx.scene.Scene;         // lägg till
-import javafx.stage.Stage;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;

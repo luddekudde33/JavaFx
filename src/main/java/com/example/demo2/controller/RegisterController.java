@@ -1,12 +1,10 @@
-package com.example.demo2;
+package com.example.demo2.controller;
 
+import com.example.demo2.NavigationService;
+import com.example.demo2.UserDao;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
-import javafx.stage.Stage;
 
 public class RegisterController {
 
