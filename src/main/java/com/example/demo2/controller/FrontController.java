@@ -25,11 +25,4 @@ public class FrontController {
         NavigationService.goBack();
     }
 
-
-    @FXML
-    private void onExit(ActionEvent event) {
-        Stage stage = (Stage) ((javafx.scene.Node) event.getSource())
-                .getScene().getWindow();
-        stage.close();
-    }
 }

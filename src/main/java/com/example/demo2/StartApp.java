@@ -11,7 +11,6 @@ public class StartApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         NavigationService.init(stage);
-        // byt ut mot frontView.fxml eller loginView.fxml
         NavigationService.navigateTo("frontView.fxml");
         stage.setTitle("Bibliotekssök");
         stage.show();
