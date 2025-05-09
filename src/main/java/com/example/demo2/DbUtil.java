@@ -10,16 +10,16 @@ public final class DbUtil {
     private static final String URL =
             "jdbc:mariadb://127.0.0.1:3306/librarydb";
 
-    private static final String USER     = "ludde";          // byt!
-    private static final String PASSWORD = "hej";  // byt!
+    private static final String USER     = "ludde";
+    private static final String PASSWORD = "hej";
 
-    private DbUtil() {}                // utility‑klass: ingen instans
+    private DbUtil() {}
 
     public static Connection getConnection() throws SQLException {
         try {
-            Class.forName("org.mariadb.jdbc.Driver");
+            Class.forName("org.mariadb.jdbc.Driver");  // är på familjedatorn, där av maria (mor) db //ludde
         } catch (ClassNotFoundException e) {
-            throw new SQLException("Kunde inte hitta MariaDB-drivrutinen", e);
+            throw new SQLException("Kunde inte hitta DB", e);
         }
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }

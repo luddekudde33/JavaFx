@@ -7,7 +7,7 @@
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.example.demo2.controller.StartController"
             stylesheets="@style.css">
-    <!-- Top menu bar -->
+
     <top>
         <MenuBar>
             <menus>
@@ -36,7 +36,7 @@
         </MenuBar>
     </top>
 
-    <!-- Center content -->
+
     <center>
         <VBox spacing="15">
             <padding>

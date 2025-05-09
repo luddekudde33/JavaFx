@@ -8,7 +8,7 @@
             fx:controller="com.example.demo2.controller.SearchController"
             stylesheets="@style.css">
 
-    <!-- Top menu bar -->
+
     <top>
         <MenuBar>
             <menus>
@@ -37,17 +37,17 @@
         </MenuBar>
     </top>
 
-    <!-- Center content -->
+
     <center>
         <VBox spacing="15">
             <padding>
                 <Insets top="20" right="20" bottom="20" left="20"/>
             </padding>
-            <!-- Header label -->
+
             <Label text="Välkommen till bibliotekets söktjänst!"
                    styleClass="header-label"/>
 
-            <!-- Search form -->
+
             <GridPane hgap="10" vgap="10">
                 <columnConstraints>
                     <ColumnConstraints percentWidth="25"/>
@@ -81,14 +81,12 @@
                           GridPane.rowIndex="4" GridPane.columnIndex="1"/>
             </GridPane>
 
-            <!-- Search button -->
-<!--            <HBox alignment="CENTER_RIGHT">-->
-<!--                <Button fx:id="searchButton" text="Sök"-->
-<!--                        onAction="#onSearch"-->
-<!--                        styleClass="primary-button"/>-->
-<!--            </HBox>-->
 
-            <!-- Results table -->
+            <HBox alignment="CENTER_RIGHT">
+                <Button fx:id="searchButton" text="Sök" styleClass="primary-button"/>
+            </HBox>
+            <!--                        onAction="#onSearch"-->
+
             <TableView fx:id="tableView" prefHeight="300">
                 <columns>
                     <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
