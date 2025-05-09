@@ -5,7 +5,7 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/23.0.1"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.demo2.controller.FrontController"
+            fx:controller="com.example.demo2.controller.SearchController"
             stylesheets="@style.css">
 
     <!-- Top menu bar -->
@@ -13,7 +13,9 @@
         <MenuBar>
             <menus>
                 <Menu text="Start">
-
+                    <items>
+                        <MenuItem text="Framsida" onAction="#onGoToStart"/>
+                    </items>
                 </Menu>
                 <Menu text="Sökning">
                     <items>
