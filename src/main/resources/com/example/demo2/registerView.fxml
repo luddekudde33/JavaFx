@@ -6,11 +6,39 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
 <AnchorPane fx:controller="com.example.demo2.controller.RegisterController"
             prefHeight="400.0" prefWidth="400.0"
             xmlns="http://javafx.com/javafx/17"
             xmlns:fx="http://javafx.com/fxml/1"
             style="-fx-background-color: #FFFFFF;">
+    <MenuBar>
+        <menus>
+            <Menu text="Start">
+                <items>
+                    <MenuItem text="Framsida" onAction="#onGoToStart"/>
+                </items>
+            </Menu>
+            <Menu text="Sökning">
+                <items>
+                    <MenuItem text="Sök böcker..."/>
+                </items>
+            </Menu>
+            <Menu text="Profil">
+                <items>
+                    <MenuItem text="Min profilsida"/>
+                    <MenuItem text="Logga in" onAction="#onGoToLogin"/>
+                </items>
+            </Menu>
+            <Menu text="Hjälp">
+                <items>
+                    <MenuItem text="Om"/>
+                </items>
+            </Menu>
+        </menus>
+    </MenuBar>
     <children>
         <VBox alignment="CENTER" spacing="10.0"
               AnchorPane.leftAnchor="20.0"

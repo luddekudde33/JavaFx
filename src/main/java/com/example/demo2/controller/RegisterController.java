@@ -62,6 +62,10 @@ public class RegisterController {
         }
     }
     @FXML
+    private void onGoToStart(ActionEvent event) {
+        NavigationService.navigateTo("startView.fxml");
+    }
+    @FXML
     private void goBack() {
         NavigationService.goBack();
     }
