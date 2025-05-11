@@ -61,7 +61,7 @@ public class LoginController {
         new Alert(Alert.AlertType.INFORMATION, msg).showAndWait();
     }
 
-    public void onGoToSearch(ActionEvent actionEvent) {
+    public void onGoToBookSearch(ActionEvent actionEvent) {
         NavigationService.navigateTo("searchView.fxml");
     }
 
@@ -72,4 +72,10 @@ public class LoginController {
     public void onGoToStart(ActionEvent actionEvent) {
         NavigationService.navigateTo("startView.fxml");
     }
+
+    public void onGoToMovieSearch(ActionEvent actionEvent) {
+        NavigationService.navigateTo("MovieSearchView.fxml");
+    }
+
+
 }

@@ -19,7 +19,8 @@
                 </Menu>
                 <Menu text="Sökning">
                     <items>
-                        <MenuItem text="Sök böcker"/>
+                        <MenuItem text="Filmer" onAction="#onGoToMovieSearch"/>
+                        <MenuItem text="Böcker"/>
                     </items>
                 </Menu>
                 <Menu text="Profil">

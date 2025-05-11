@@ -23,7 +23,8 @@
             </Menu>
             <Menu text="Sökning">
                 <items>
-                    <MenuItem text="Sök böcker..."/>
+                    <MenuItem text="Böcker" onAction="#onGoToBookSearch"/>
+                    <MenuItem text="Filmer" onAction="#onGoToMovieSearch"/>
                 </items>
             </Menu>
             <Menu text="Profil">

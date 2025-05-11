@@ -70,4 +70,10 @@ public class RegisterController {
         NavigationService.goBack();
     }
 
+    public void onGoToMovieSearch(ActionEvent actionEvent) {
+        NavigationService.navigateTo("MovieSearchView.fxml");
+    }
+    public void onGoToBookSearch(ActionEvent actionEvent) {
+        NavigationService.navigateTo("BookSearchView.fxml");
+    }
 }

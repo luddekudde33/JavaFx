@@ -13,18 +13,20 @@
             <menus>
                 <Menu text="Start">
                     <items>
-                        <MenuItem text="Logga in" onAction="#onGoToLogin"/>
-                        <MenuItem text="Skapa profil" onAction="#onGoToRegister"/>
+
                     </items>
                 </Menu>
                 <Menu text="Sökning">
                     <items>
-                        <MenuItem text="Gå till sök" onAction="#onGoToSearch"/>
+                        <MenuItem text="Böcker" onAction="#onGoToBookSearch"/>
+                        <MenuItem text="Filmer" onAction="#onGoToMovieSearch"/>
                     </items>
                 </Menu>
                 <Menu text="Profil">
                     <items>
-                        <MenuItem text="Min profilsida" onAction="#onGoToProfile"/>
+                        <MenuItem text="Min profilsida"  onAction="#onGoToProfile"/>
+                        <MenuItem text="Logga in" onAction="#onGoToLogin"/>
+                        <MenuItem text="Skapa profil" onAction="#onGoToRegister"/>
                     </items>
                 </Menu>
                 <Menu text="Hjälp">
@@ -46,7 +48,8 @@
             <HBox spacing="10" alignment="CENTER">
                 <Button text="Logga in" onAction="#onGoToLogin" styleClass="primary-button"/>
                 <Button text="Skapa profil" onAction="#onGoToRegister" styleClass="primary-button"/>
-                <Button text="Gå till bok-sök" onAction="#onGoToSearch" styleClass="primary-button"/>
+                <Button text="Gå till bok-sök" onAction="#onGoToBookSearch" styleClass="primary-button"/>
+                <Button text="Gå till film-sök" onAction="#onGoToMovieSearch" styleClass="primary-button"/>
             </HBox>
         </VBox>
     </center>

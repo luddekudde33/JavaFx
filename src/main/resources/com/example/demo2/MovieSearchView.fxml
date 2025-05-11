@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.demo2.controller.MovieSearchController"
+            prefWidth="600.0" prefHeight="400.0"
+            stylesheets="@style.css">
+    <children>
+        <!-- Top menu bar -->
+        <MenuBar AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <menus>
+                <Menu text="Start">
+                    <items>
+                        <MenuItem text="Logga in" onAction="#onGoToLogin"/>
+                        <MenuItem text="Skapa profil" onAction="#onGoToRegister"/>
+                    </items>
+                </Menu>
+                <Menu text="Sökning">
+                    <items>
+                        <MenuItem text="Böcker" onAction="#onGoToBookSearch"/>
+                        <MenuItem text="Filmer" />
+                    </items>
+                </Menu>
+                <Menu text="Profil">
+                    <items>
+                        <MenuItem text="Min profilsida" />
+                    </items>
+                </Menu>
+                <Menu text="Hjälp">
+                    <items>
+                        <MenuItem text="Om" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+
+        <!-- Main content -->
+        <VBox spacing="15" AnchorPane.topAnchor="30.0" AnchorPane.leftAnchor="20.0"
+              AnchorPane.rightAnchor="20.0" AnchorPane.bottomAnchor="20.0">
+            <!-- Header -->
+            <Label text="Sök Filmer" styleClass="header-label"/>
+
+            <!-- Search form -->
+            <GridPane hgap="10" vgap="10">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="25"/>
+                    <ColumnConstraints percentWidth="75"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="30"/>
+                    <RowConstraints minHeight="30"/>
+                    <RowConstraints minHeight="30"/>
+                    <RowConstraints minHeight="30"/>
+                    <RowConstraints minHeight="30"/>
+                </rowConstraints>
+
+                <Label text="Titel:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="titleField" promptText="Ange titel..." GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <Label text="Regissör:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="directorField" promptText="Ange regissör..." GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <Label text="Skådespelare:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="actorField" promptText="Ange skådespelare..." GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                <Label text="Genre:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <ChoiceBox fx:id="genreBox" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                <CheckBox fx:id="availableOnlyCB" text="Visa endast tillgängliga exemplar" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+            </GridPane>
+
+            <!-- Search button -->
+            <HBox alignment="CENTER_RIGHT">
+                <Button fx:id="searchButton" text="Sök" styleClass="primary-button"/>
+            </HBox>
+
+            <!-- Results table -->
+            <TableView fx:id="tableView" prefHeight="300">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+                    <TableColumn fx:id="colTitle" text="Titel" prefWidth="200"/>
+                    <TableColumn fx:id="colDirector" text="Regissör" prefWidth="150"/>
+                    <TableColumn fx:id="colGenre" text="Genre" prefWidth="100"/>
+                    <TableColumn fx:id="colAvailable" text="Tillgänglig" prefWidth="80"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </children>
+</AnchorPane>

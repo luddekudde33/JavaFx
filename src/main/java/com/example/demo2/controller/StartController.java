@@ -17,17 +17,22 @@ public class StartController {
     }
 
     @FXML
-    private void onGoToSearch(ActionEvent event) {
+    private void onGoToBookSearch(ActionEvent event) {
         NavigationService.navigateTo("BookSearchView.fxml");
     }
 
     @FXML
     private void onGoToProfile(ActionEvent event) {
-        NavigationService.navigateTo("profileView.fxml"); // skapa om du saknar
+        NavigationService.navigateTo("ProfileView.fxml");
     }
 
     @FXML
     private void onAbout(ActionEvent event) {
         // Visa om-dialog, t.ex. via Alert
+    }
+
+
+    public void onGoToMovieSearch(ActionEvent actionEvent) {
+        NavigationService.navigateTo("MovieSearchView.fxml");
     }
 }

@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 
-public class BookSearchController {
+public class MovieSearchController {
 
     @FXML
     private void onGoToLogin(ActionEvent event) {
@@ -28,7 +28,11 @@ public class BookSearchController {
         NavigationService.goBack();
     }
 
-    public void onGoToMovieSearch(ActionEvent actionEvent) {
-        NavigationService.navigateTo("movieSearchView.fxml");
+    public void onGoToRegister(ActionEvent actionEvent) {
+        NavigationService.navigateTo("registerView.fxml");
+    }
+
+    public void onGoToBookSearch(ActionEvent actionEvent) {
+        NavigationService.navigateTo("bookSearchView.fxml");
     }
 }
