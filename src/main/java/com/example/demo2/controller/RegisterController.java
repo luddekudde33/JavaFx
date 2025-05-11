@@ -76,4 +76,7 @@ public class RegisterController {
     public void onGoToBookSearch(ActionEvent actionEvent) {
         NavigationService.navigateTo("BookSearchView.fxml");
     }
+    public void onGoToAbout(ActionEvent actionEvent) {
+        NavigationService.navigateTo("AboutView.fxml");
+    }
 }

@@ -9,7 +9,7 @@
             prefWidth="600.0" prefHeight="400.0"
             stylesheets="@style.css">
     <children>
-        <!-- Top menu bar -->
+
         <MenuBar AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <menus>
                 <Menu text="Start">
@@ -31,19 +31,19 @@
                 </Menu>
                 <Menu text="Hjälp">
                     <items>
-                        <MenuItem text="Om" />
+                        <MenuItem text="Om oss" onAction="#onGoToAbout"/>
                     </items>
                 </Menu>
             </menus>
         </MenuBar>
 
-        <!-- Main content -->
+
         <VBox spacing="15" AnchorPane.topAnchor="30.0" AnchorPane.leftAnchor="20.0"
               AnchorPane.rightAnchor="20.0" AnchorPane.bottomAnchor="20.0">
-            <!-- Header -->
+
             <Label text="Sök Filmer" styleClass="header-label"/>
 
-            <!-- Search form -->
+
             <GridPane hgap="10" vgap="10">
                 <columnConstraints>
                     <ColumnConstraints percentWidth="25"/>
@@ -72,12 +72,12 @@
                 <CheckBox fx:id="availableOnlyCB" text="Visa endast tillgängliga exemplar" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
             </GridPane>
 
-            <!-- Search button -->
+
             <HBox alignment="CENTER_RIGHT">
                 <Button fx:id="searchButton" text="Sök" styleClass="primary-button"/>
             </HBox>
 
-            <!-- Results table -->
+
             <TableView fx:id="tableView" prefHeight="300">
                 <columns>
                     <TableColumn fx:id="colId" text="ID" prefWidth="50"/>

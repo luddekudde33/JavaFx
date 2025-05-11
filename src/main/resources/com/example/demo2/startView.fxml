@@ -31,7 +31,7 @@
                 </Menu>
                 <Menu text="Hjälp">
                     <items>
-                        <MenuItem text="Om" onAction="#onAbout"/>
+                        <MenuItem text="Om oss" onAction="#onGoToAbout"/>
                     </items>
                 </Menu>
             </menus>

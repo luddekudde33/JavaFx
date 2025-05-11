@@ -20,7 +20,7 @@ public class MovieSearchController {
     }
     @FXML
     private void onGoToStart(ActionEvent event) {
-        NavigationService.navigateTo("startView.fxml");
+        NavigationService.navigateTo("StartView.fxml");
     }
 
     @FXML
@@ -29,10 +29,14 @@ public class MovieSearchController {
     }
 
     public void onGoToRegister(ActionEvent actionEvent) {
-        NavigationService.navigateTo("registerView.fxml");
+        NavigationService.navigateTo("RegisterView.fxml");
     }
 
     public void onGoToBookSearch(ActionEvent actionEvent) {
-        NavigationService.navigateTo("bookSearchView.fxml");
+        NavigationService.navigateTo("BookSearchView.fxml");
+    }
+
+    public void onGoToAbout(ActionEvent actionEvent) {
+        NavigationService.navigateTo("AboutView.fxml");
     }
 }

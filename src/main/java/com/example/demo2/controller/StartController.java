@@ -26,13 +26,11 @@ public class StartController {
         NavigationService.navigateTo("ProfileView.fxml");
     }
 
-    @FXML
-    private void onAbout(ActionEvent event) {
-        // Visa om-dialog, t.ex. via Alert
-    }
-
-
     public void onGoToMovieSearch(ActionEvent actionEvent) {
         NavigationService.navigateTo("MovieSearchView.fxml");
+    }
+
+    public void onGoToAbout(ActionEvent actionEvent) {
+        NavigationService.navigateTo("AboutView.fxml");
     }
 }

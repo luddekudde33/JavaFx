@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.demo2.controller.AboutController"
+            prefWidth="600.0" prefHeight="400.0"
+            stylesheets="@style.css">
+    <children>
+        <!-- Menybar -->
+        <MenuBar AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+            <menus>
+                <Menu text="Start">
+                    <items>
+                        <MenuItem text="Logga in" onAction="#onGoToLogin"/>
+                        <MenuItem text="Skapa profil" onAction="#onGoToRegister"/>
+                    </items>
+                </Menu>
+                <Menu text="Sökning">
+                    <items>
+                        <MenuItem text="Böcker" onAction="#onGoToBookSearch"/>
+                        <MenuItem text="Filmer" onAction="#onGoToMovieSearch"/>
+                    </items>
+                </Menu>
+                <Menu text="Profil">
+                    <items>
+                        <MenuItem text="Min profilsida" onAction="#onGoToProfile"/>
+                    </items>
+                </Menu>
+                <Menu text="Hjälp">
+                    <items>
+                        <MenuItem text="Om oss"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+
+
+        <VBox spacing="10" AnchorPane.topAnchor="30" AnchorPane.leftAnchor="20"
+              AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="20">
+            <Label text="Om oss" styleClass="header-label"/>
+            <TextArea editable="false" wrapText="true" prefRowCount="10">
+                <text>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed eros in ex vehicula interdum ac vitae quam. In consectetur, felis eu tincidunt pellentesque, ipsum tortor sollicitudin libero, non efficitur metus sapien eu nulla. Aenean tincidunt hendrerit magna. Integer pretium cursus lacinia. Phasellus elit nibh, pulvinar non velit a, imperdiet blandit nulla. Praesent odio justo, cursus vel purus ut, commodo tincidunt sem. Cras id tortor sit amet ipsum tempus rutrum sit amet eu sapien. Sed id mi tortor. Curabitur quis auctor nibh. Ut et ex tellus. Curabitur hendrerit magna at massa efficitur venenatis. Nunc in mi ultricies, feugiat dolor sit amet, luctus orci. Phasellus augue augue, fermentum ut ligula id, vulputate aliquam metus.
+                </text>
+            </TextArea>
+        </VBox>
+    </children>
+</AnchorPane>

@@ -29,10 +29,10 @@ public class ProfileController {
 //        }
 //    }
 
-    @FXML
-    private void onEditProfile(ActionEvent e) {
-        NavigationService.navigateTo("editProfileView.fxml");
-    }
+//    @FXML
+//    private void onEditProfile(ActionEvent e) {
+//        NavigationService.navigateTo("editProfileView.fxml");
+//    }
 
 //    @FXML
 //    private void onLogout(ActionEvent e) {
@@ -57,5 +57,13 @@ public class ProfileController {
 
     public void onGoToMovieSearch(ActionEvent actionEvent) {
         NavigationService.navigateTo("MovieSearchView.fxml");
+    }
+
+    public void onGoToAbout(ActionEvent actionEvent) {
+        NavigationService.navigateTo("AboutView.fxml");
+    }
+
+    public void onGoToStart(ActionEvent actionEvent) {
+        NavigationService.navigateTo("StartView.fxml");
     }
 }

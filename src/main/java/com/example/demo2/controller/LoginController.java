@@ -44,7 +44,7 @@ public class LoginController {
 
     private void switchToMainView() {
         try {
-            NavigationService.navigateTo("loginView.fxml");
+            NavigationService.navigateTo("LoginCheckView.fxml");
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -14,8 +14,7 @@
             <menus>
                 <Menu text="Start">
                     <items>
-                        <MenuItem text="Logga in" onAction="#onGoToLogin"/>
-                        <MenuItem text="Skapa profil" onAction="#onGoToRegister"/>
+                        <MenuItem text="Framsida" onAction="#onGoToStart"/>
                     </items>
                 </Menu>
                 <Menu text="Sökning">
@@ -26,12 +25,14 @@
                 </Menu>
                 <Menu text="Profil">
                     <items>
-                        <MenuItem text="Min profilsida"/>
+
+                        <MenuItem text="Logga in" onAction="#onGoToLogin"/>
+                        <MenuItem text="Skapa profil" onAction="#onGoToRegister"/>
                     </items>
                 </Menu>
                 <Menu text="Hjälp">
                     <items>
-                        <MenuItem text="Om"/>
+                        <MenuItem text="Om oss" onAction="#onGoToAbout"/>
                     </items>
                 </Menu>
             </menus>
@@ -69,7 +70,7 @@
 
 
             <HBox spacing="10" alignment="CENTER_RIGHT">
-                <Button text="Redigera profil" onAction="#onEditProfile" styleClass="primary-button"/>
+                <Button text="Redigera profil"  styleClass="primary-button"/>
                 <Button text="Logga ut" />
             </HBox>
         </VBox>
