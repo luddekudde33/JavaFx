@@ -46,7 +46,7 @@
             <HBox spacing="10" alignment="CENTER">
                 <Button text="Logga in" onAction="#onGoToLogin" styleClass="primary-button"/>
                 <Button text="Skapa profil" onAction="#onGoToRegister" styleClass="primary-button"/>
-                <Button text="Gå till sök" onAction="#onGoToSearch" styleClass="primary-button"/>
+                <Button text="Gå till bok-sök" onAction="#onGoToSearch" styleClass="primary-button"/>
             </HBox>
         </VBox>
     </center>

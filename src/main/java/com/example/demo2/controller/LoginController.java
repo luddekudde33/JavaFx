@@ -2,6 +2,7 @@ package com.example.demo2.controller;
 
 import com.example.demo2.NavigationService;
 import com.example.demo2.UserDao;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Alert;
@@ -60,4 +61,15 @@ public class LoginController {
         new Alert(Alert.AlertType.INFORMATION, msg).showAndWait();
     }
 
+    public void onGoToSearch(ActionEvent actionEvent) {
+        NavigationService.navigateTo("searchView.fxml");
+    }
+
+    public void onGoToRegister(ActionEvent actionEvent) {
+        NavigationService.navigateTo("registerView.fxml");
+    }
+
+    public void onGoToStart(ActionEvent actionEvent) {
+        NavigationService.navigateTo("startView.fxml");
+    }
 }

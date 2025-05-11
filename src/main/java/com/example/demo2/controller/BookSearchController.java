@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 
-public class SearchController {
+public class BookSearchController {
 
     @FXML
     private void onGoToLogin(ActionEvent event) {

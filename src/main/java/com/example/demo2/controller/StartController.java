@@ -18,7 +18,7 @@ public class StartController {
 
     @FXML
     private void onGoToSearch(ActionEvent event) {
-        NavigationService.navigateTo("SearchView.fxml");
+        NavigationService.navigateTo("BookSearchView.fxml");
     }
 
     @FXML

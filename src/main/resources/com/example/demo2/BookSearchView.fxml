@@ -5,7 +5,7 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/23.0.1"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.demo2.controller.SearchController"
+            fx:controller="com.example.demo2.controller.BookSearchController"
             stylesheets="@style.css">
 
 
@@ -19,7 +19,7 @@
                 </Menu>
                 <Menu text="Sökning">
                     <items>
-                        <MenuItem text="Sök böcker..."/>
+                        <MenuItem text="Sök böcker"/>
                     </items>
                 </Menu>
                 <Menu text="Profil">
@@ -44,7 +44,7 @@
                 <Insets top="20" right="20" bottom="20" left="20"/>
             </padding>
 
-            <Label text="Välkommen till bibliotekets söktjänst!"
+            <Label text="Välkommen till bibliotekets söktjänst för böcker!"
                    styleClass="header-label"/>
 
 
