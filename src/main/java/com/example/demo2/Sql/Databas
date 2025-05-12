@@ -76,6 +76,7 @@ CREATE TABLE Reminder (
     FOREIGN KEY (loanID) REFERENCES Loan(loanID)
 );
 
+
 -- TestData
 
 INSERT INTO UserCategory (categoryName, maxLoans, loanPeriodBooks, loanPeriodCourseLit, loanPeriodDVDs) VALUES

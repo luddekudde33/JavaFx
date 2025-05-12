@@ -8,7 +8,7 @@ public class AboutController {
 
 
     @FXML private void onGoToLogin(ActionEvent e) {
-        NavigationService.navigateTo("loginView.fxml");
+        NavigationService.navigateTo("LoginView.fxml");
     }
     @FXML private void onGoToRegister(ActionEvent e) {
         NavigationService.navigateTo("registerView.fxml");
@@ -20,7 +20,7 @@ public class AboutController {
         NavigationService.navigateTo("MovieSearchView.fxml");
     }
     @FXML private void onGoToProfile(ActionEvent e) {
-        NavigationService.navigateTo("profileView.fxml");
+        NavigationService.navigateTo("ProfileView.fxml");
     }
 
     public void onGoToStart(ActionEvent actionEvent) {

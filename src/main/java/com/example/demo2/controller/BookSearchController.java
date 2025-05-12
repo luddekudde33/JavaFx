@@ -10,7 +10,7 @@ public class BookSearchController {
     @FXML
     private void onGoToLogin(ActionEvent event) {
         try {
-            NavigationService.navigateTo("loginView.fxml");
+            NavigationService.navigateTo("LoginView.fxml");
         } catch (Exception e) {
             e.printStackTrace();
             new Alert(Alert.AlertType.ERROR,

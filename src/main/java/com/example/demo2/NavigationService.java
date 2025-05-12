@@ -40,7 +40,7 @@ public class NavigationService {
     public static void navigateTo(String fxml) {
         if ("ProfileView.fxml".equals(fxml) && !loggedIn) {
             new Alert(Alert.AlertType.WARNING, "Du måste logga in först.").showAndWait();
-            fxml = "loginView.fxml";
+            fxml = "LoginView.fxml";
         }
         try {
             FXMLLoader loader = new FXMLLoader(

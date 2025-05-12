@@ -73,5 +73,7 @@ public class LoginController {
         NavigationService.navigateTo("MovieSearchView.fxml");
     }
 
-
+    public void onGoToAbout(ActionEvent actionEvent) {
+        NavigationService.navigateTo("AboutView.fxml");
+    }
 }

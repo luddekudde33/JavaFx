@@ -8,7 +8,7 @@ public class StartController {
 
     @FXML
     private void onGoToLogin(ActionEvent event) {
-        NavigationService.navigateTo("loginView.fxml");
+        NavigationService.navigateTo("LoginView.fxml");
     }
 
     @FXML
