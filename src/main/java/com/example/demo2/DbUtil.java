@@ -10,8 +10,8 @@ public final class DbUtil {
     private static final String URL =
             "jdbc:mariadb://127.0.0.1:3306/librarydb";
 
-    private static final String USER     = "ludde";
-    private static final String PASSWORD = "hej";
+    private static final String USER     = "127.0.0.1";  //Ändra om de inte funkar
+    private static final String PASSWORD = "";  // Ändra om de inte funkar
 
     private DbUtil() {}
 

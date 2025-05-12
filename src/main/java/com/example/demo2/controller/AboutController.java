@@ -11,7 +11,7 @@ public class AboutController {
         NavigationService.navigateTo("LoginView.fxml");
     }
     @FXML private void onGoToRegister(ActionEvent e) {
-        NavigationService.navigateTo("registerView.fxml");
+        NavigationService.navigateTo("RegisterView.fxml");
     }
     @FXML private void onGoToBookSearch(ActionEvent e) {
         NavigationService.navigateTo("BookSearchView.fxml");
@@ -24,6 +24,6 @@ public class AboutController {
     }
 
     public void onGoToStart(ActionEvent actionEvent) {
-        NavigationService.navigateTo("startView.fxml");
+        NavigationService.navigateTo("StartView.fxml");
     }
 }
