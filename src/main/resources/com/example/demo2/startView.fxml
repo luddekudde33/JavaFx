@@ -44,7 +44,7 @@
             <padding>
                 <Insets top="20" right="20" bottom="20" left="20"/>
             </padding>
-            <Label text="Välkommen till Biblioteks-appen!" styleClass="header-label"/>
+            <Label text="Välkommen till Biblioteks-appen! (Snabbväg för att testa olika funktioner)" styleClass="header-label"/>
             <HBox spacing="10" alignment="CENTER">
                 <Button text="Logga in" onAction="#onGoToLogin" styleClass="primary-button"/>
                 <Button text="Skapa profil" onAction="#onGoToRegister" styleClass="primary-button"/>

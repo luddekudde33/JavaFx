@@ -27,6 +27,7 @@ public class LoginController {
         }
 
         if (userDao.authenticate(email, pwd)) {
+            NavigationService.setLoggedIn(true);
             switchToMainView();
         } else {
             alert("Felaktig e‑postadress eller lösenord.");
@@ -51,11 +52,6 @@ public class LoginController {
             alert("Kunde inte ladda nästa vy.");
         }
     }
-    @FXML
-    private void goBack() {
-        NavigationService.goBack();
-    }
-
 
     private void alert(String msg) {
         new Alert(Alert.AlertType.INFORMATION, msg).showAndWait();

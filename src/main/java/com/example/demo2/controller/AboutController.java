@@ -6,7 +6,7 @@ import com.example.demo2.NavigationService;
 
 public class AboutController {
 
-    // Navigeringsmetoder
+
     @FXML private void onGoToLogin(ActionEvent e) {
         NavigationService.navigateTo("loginView.fxml");
     }
@@ -21,5 +21,9 @@ public class AboutController {
     }
     @FXML private void onGoToProfile(ActionEvent e) {
         NavigationService.navigateTo("profileView.fxml");
+    }
+
+    public void onGoToStart(ActionEvent actionEvent) {
+        NavigationService.navigateTo("startView.fxml");
     }
 }

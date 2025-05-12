@@ -23,11 +23,6 @@ public class MovieSearchController {
         NavigationService.navigateTo("StartView.fxml");
     }
 
-    @FXML
-    private void goBack() {
-        NavigationService.goBack();
-    }
-
     public void onGoToRegister(ActionEvent actionEvent) {
         NavigationService.navigateTo("RegisterView.fxml");
     }
@@ -38,5 +33,9 @@ public class MovieSearchController {
 
     public void onGoToAbout(ActionEvent actionEvent) {
         NavigationService.navigateTo("AboutView.fxml");
+    }
+
+    public void onGotoProfile(ActionEvent actionEvent) {
+        NavigationService.navigateTo("ProfileView.fxml");
     }
 }

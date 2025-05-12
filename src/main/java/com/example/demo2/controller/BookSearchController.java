@@ -23,10 +23,6 @@ public class BookSearchController {
         NavigationService.navigateTo("startView.fxml");
     }
 
-    @FXML
-    private void goBack() {
-        NavigationService.goBack();
-    }
 
     public void onGoToMovieSearch(ActionEvent actionEvent) {
         NavigationService.navigateTo("movieSearchView.fxml");
