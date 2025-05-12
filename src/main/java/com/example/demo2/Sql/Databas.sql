@@ -1,4 +1,4 @@
-DROP DATABASE LibraryDB;
+DROP DATABASE IF EXISTS LibraryDB;
 CREATE DATABASE LibraryDB;
 USE LibraryDB;
 
@@ -12,6 +12,14 @@ CREATE TABLE UserCategory (
     loanPeriodDVDs INT NOT NULL
 );
 
+-- Oklart
+CREATE TABLE Address (
+    addressID INT PRIMARY KEY AUTO_INCREMENT,
+    addressLine VARCHAR(255) NOT NULL,
+    zipCode VARCHAR(5) NOT NULL,
+    country VARCHAR(255) NOT NULL
+);
+
 -- phone, oklar
 CREATE TABLE `User` (
     userID INT PRIMARY KEY AUTO_INCREMENT,
@@ -23,14 +31,6 @@ CREATE TABLE `User` (
     addressID INT,
     FOREIGN KEY (categoryID) REFERENCES UserCategory(categoryID),
     FOREIGN KEY (addressID) REFERENCES Address(addressID)
-);
-
--- Oklart
-CREATE TABLE Address (
-    addressID INT PRIMARY KEY AUTO_INCREMENT,
-    addressLine VARCHAR(255) NOT NULL,
-    zipCode VARCHAR(5) NOT NULL,
-    country VARCHAR(255) NOT NULL
 );
 
 -- ISBN lägg till beroende på hur vi gör
@@ -84,23 +84,20 @@ INSERT INTO UserCategory (categoryName, maxLoans, loanPeriodBooks, loanPeriodCou
 ('Teacher', 10, 30, 30, 14),
 ('Guest', 2, 14, 7, 3);
 
+INSERT INTO Address (addressLine, zipCode, country) VALUES
+('Storgatan 1', '11111', 'Sweden'),
+('Lilla Vägen 22', '22222', 'Sweden'),
+('Biblioteksgatan 5', '33333', 'Sweden');
 
 INSERT INTO `User` (fullName, email, phoneNr, password, categoryID, addressID) VALUES
 ('Anna Svensson', 'anna@example.com', '0701234567', 'Hejsan123', 1, 1),
 ('Erik Johansson', 'erik@example.com', '0702345678', 'Svejsan456', 2, 2),
 ('Lisa Andersson', 'lisa@example.com', '0703456789','fickintedelta789', 3, 3);
 
-
-INSERT INTO Address (addressLine, zipCode, country) VALUES
-('Storgatan 1', '11111', 'Sweden'),
-('Lilla Vägen 22', '22222', 'Sweden'),
-('Biblioteksgatan 5', '33333', 'Sweden');
-
-
-INSERT INTO Item (title, category, authorOrArtist, publisher, barcode, physicalLocation, classification) VALUES
-('1984', 'Book', 'George Orwell', 'Penguin', 'B001', 'Shelf A1', '823.912'),
-('Introduction to Algorithms', 'CourseLiterature', 'Cormen et al.', 'MIT Press', 'B002', 'Shelf B2', '005.1'),
-('Inception', 'DVD', 'Christopher Nolan', 'Warner Bros.', 'D001', 'DVD Shelf', '791.43');
+INSERT INTO Item (title, category, authorOrArtist, publisher, barcode, isbn, physicalLocation, classification) VALUES
+('1984', 'Book', 'George Orwell', 'Penguin', 'B001', '0151010269', 'Shelf A1', '823.912'),
+('Introduction to Algorithms', 'CourseLiterature', 'Cormen et al.', 'MIT Press', 'B002', '9780262033848', 'Shelf B2', '005.1'),
+('Inception', 'DVD', 'Christopher Nolan', 'Warner Bros.', 'D001', '000', 'DVD Shelf', '791.43');
 
 
 INSERT INTO ItemCopy (newBarcode, isAvailable, physicalLocation, itemID) VALUES
