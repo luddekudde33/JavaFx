@@ -25,15 +25,7 @@ public class NavigationService {
 
     public static boolean isUserLoggedIn()  { return userLoggedIn;  }
     public static boolean isStaffLoggedIn() { return staffLoggedIn; }
-//    kan användas senare med:
-//            NavigationService.setLoggedIn(true);
-//
-//
-//    if (NavigationService.isLoggedIn()) {
-//        // Tillåt åtkomst
-//    } else {
-//        // Visa inloggningsvy
-//    }
+
 
     public static void navigateTo(String fxml) {
         if ("ProfileView.fxml".equals(fxml) && !userLoggedIn) {
