@@ -25,12 +25,16 @@ public class StartController {
     private void onGoToProfile(ActionEvent event) {
         NavigationService.navigateTo("ProfileView.fxml");
     }
-
+    @FXML
     public void onGoToMovieSearch(ActionEvent actionEvent) {
         NavigationService.navigateTo("MovieSearchView.fxml");
     }
-
+    @FXML
     public void onGoToAbout(ActionEvent actionEvent) {
         NavigationService.navigateTo("AboutView.fxml");
+    }
+    @FXML
+    public void onGoToStaffLoggin(ActionEvent actionEvent) {
+        NavigationService.navigateTo("StaffLoginView.fxml");
     }
 }

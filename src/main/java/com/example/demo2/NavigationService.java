@@ -13,19 +13,18 @@ import java.util.Deque;
 public class NavigationService {
     private static Stage primaryStage;
     private static final Deque<Scene> history = new ArrayDeque<>();
-    private static boolean loggedIn = false;
+    private static boolean userLoggedIn = false;
+    private static boolean staffLoggedIn = false;
 
     public static void init(Stage stage) {
         primaryStage = stage;
     }
 
-    public static void setLoggedIn(boolean value) {
-        loggedIn = value;
-    }
+    public static void setUserLoggedIn(boolean value)  { userLoggedIn  = value; }
+    public static void setStaffLoggedIn(boolean value)  { staffLoggedIn  = value; }
 
-    public static boolean isLoggedIn() {
-        return loggedIn;
-    }
+    public static boolean isUserLoggedIn()  { return userLoggedIn;  }
+    public static boolean isStaffLoggedIn() { return staffLoggedIn; }
 //    kan användas senare med:
 //            NavigationService.setLoggedIn(true);
 //
@@ -36,9 +35,8 @@ public class NavigationService {
 //        // Visa inloggningsvy
 //    }
 
-
     public static void navigateTo(String fxml) {
-        if ("ProfileView.fxml".equals(fxml) && !loggedIn) {
+        if ("ProfileView.fxml".equals(fxml) && !userLoggedIn) {
             new Alert(Alert.AlertType.WARNING, "Du måste logga in först.").showAndWait();
             fxml = "LoginView.fxml";
         }
@@ -63,3 +61,5 @@ public class NavigationService {
         }
     }
 }
+
+

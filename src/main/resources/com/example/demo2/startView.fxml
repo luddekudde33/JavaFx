@@ -50,6 +50,7 @@
                 <Button text="Skapa profil" onAction="#onGoToRegister" styleClass="primary-button"/>
                 <Button text="Gå till bok-sök" onAction="#onGoToBookSearch" styleClass="primary-button"/>
                 <Button text="Gå till film-sök" onAction="#onGoToMovieSearch" styleClass="primary-button"/>
+                <Button text="Gå till Staff-loggin" onAction="#onGoToStaffLoggin" styleClass="primary-button"/>
             </HBox>
         </VBox>
     </center>

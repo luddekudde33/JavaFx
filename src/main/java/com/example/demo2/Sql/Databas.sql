@@ -76,6 +76,14 @@ CREATE TABLE Reminder (
     FOREIGN KEY (loanID) REFERENCES Loan(loanID)
 );
 
+CREATE TABLE Staff (
+    staffID    INT PRIMARY KEY AUTO_INCREMENT,
+    staffFullName   VARCHAR(255) NOT NULL,
+    staffEmail      VARCHAR(255) UNIQUE NOT NULL,
+    staffPhoneNr    VARCHAR(50),
+    staffPassword   VARCHAR(255) NOT NULL
+);
+
 
 -- TestData
 
@@ -115,4 +123,10 @@ INSERT INTO Loan (loanDate, dueDate, status, userID, copyID) VALUES
 INSERT INTO Reminder (reminderDate, loanID) VALUES
 (NOW(), 1),
 (NOW(), 3);
+
+INSERT INTO Staff (staffFullName, staffEmail, staffPhoneNr, staffPassword)
+VALUES
+    ('Bibliotekarie Anna', 'anna.staff@example.com', '0701234567', 'hemligtLösen1'),
+    ('Bibliotekarie Erik', 'erik.staff@example.com', '0702345678', 'hemligtLösen2');
+
 

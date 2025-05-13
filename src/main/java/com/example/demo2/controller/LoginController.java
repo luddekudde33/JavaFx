@@ -27,7 +27,7 @@ public class LoginController {
         }
 
         if (userDao.authenticate(email, pwd)) {
-            NavigationService.setLoggedIn(true);
+            NavigationService.setUserLoggedIn(true);
             switchToMainView();
         } else {
             alert("Felaktig e‑postadress eller lösenord.");
