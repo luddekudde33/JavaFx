@@ -1,6 +1,6 @@
 package com.example.demo2.Dao;
 
-import com.example.demo2.DbUtil;
+import com.example.demo2.Sql.DbUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

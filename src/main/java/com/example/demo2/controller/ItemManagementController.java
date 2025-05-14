@@ -1,8 +1,8 @@
 package com.example.demo2.controller;
 
 import com.example.demo2.NavigationService;
-import com.example.demo2.ItemDao;
-import com.example.demo2.Item;
+import com.example.demo2.Dao.ItemDao;
+import com.example.demo2.Model.Item;
 import javafx.collections.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

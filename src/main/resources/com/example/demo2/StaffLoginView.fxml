@@ -14,7 +14,7 @@
             <menus>
                 <Menu text="Start">
                     <items>
-                        <MenuItem text="Tillbaka" onAction="#goBack"/>
+                        <MenuItem text="Framsidan" onAction="#goBack"/>
                     </items>
                 </Menu>
                 <Menu text="Hjälp">

@@ -1,4 +1,4 @@
-package com.example.demo2;
+package com.example.demo2.Model;
 
 public class Staff {
     private final int staffID;

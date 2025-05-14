@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import com.example.demo2.Sql.DbUtil;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

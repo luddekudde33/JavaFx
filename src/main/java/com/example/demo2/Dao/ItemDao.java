@@ -1,7 +1,7 @@
-package com.example.demo2;
+package com.example.demo2.Dao;
 
-import com.example.demo2.Item;
-import com.example.demo2.DbUtil;
+import com.example.demo2.Model.Item;
+import com.example.demo2.Sql.DbUtil;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
