@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.demo2.controller.ItemManagementController"
+            prefWidth="800.0" prefHeight="600.0"
+            stylesheets="@style.css">
+    <children>
+        <!-- Top menu -->
+        <MenuBar AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+            <menus>
+                <Menu text="Admin">
+                    <items>
+                        <MenuItem text="Dashboard" onAction="#onGoToDashboard"/>
+                        <MenuItem text="Logga ut"    onAction="#onLogout"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+
+        <!-- Table of items -->
+        <TableView fx:id="itemTable"
+                   AnchorPane.topAnchor="30" AnchorPane.leftAnchor="10"
+                   AnchorPane.rightAnchor="10" AnchorPane.bottomAnchor="50">
+            <columns>
+                <TableColumn fx:id="colId"             text="ID" />
+                <TableColumn fx:id="colTitle"          text="Titel" />
+                <TableColumn fx:id="colCategory"       text="Kategori" />
+                <TableColumn fx:id="colAuthor"         text="Författare/Artist" />
+                <TableColumn fx:id="colPublisher"      text="Förlag" />
+                <TableColumn fx:id="colBarcode"        text="Streckkod" />
+                <TableColumn fx:id="colClassification" text="Classificering" />
+                <TableColumn fx:id="colLocation"       text="Plats" />
+            </columns>
+        </TableView>
+
+        <!-- Buttons -->
+        <HBox spacing="10" AnchorPane.bottomAnchor="10" AnchorPane.leftAnchor="10">
+            <Button text="Lägg till" onAction="#onAddItem"/>
+            <Button text="Redigera" onAction="#onEditItem"/>
+            <Button text="Ta bort"   onAction="#onDeleteItem"/>
+            <Button text="Tillbaka" onAction="#goBack"/>
+        </HBox>
+    </children>
+</AnchorPane>

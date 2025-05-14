@@ -1,7 +1,6 @@
 package com.example.demo2.controller;
 
-import com.example.demo2.StaffDao;
-import com.example.demo2.Staff;
+import com.example.demo2.Dao.StaffDao;
 import com.example.demo2.NavigationService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,7 +25,7 @@ public class StaffLoginController {
 
         if (staffDao.authenticate(email, pwd)) {
             NavigationService.setStaffLoggedIn(true);
-            NavigationService.navigateTo("CheckStaffLogginView.fxml");
+            NavigationService.navigateTo("MainStaffLogginView.fxml");
         } else {
             showAlert("Felaktig e-post eller lösenord för personal.");
         }

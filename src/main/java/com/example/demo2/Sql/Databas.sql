@@ -46,7 +46,6 @@ CREATE TABLE Item (
     classification VARCHAR(255)
 );
 
-
 CREATE TABLE ItemCopy (
     copyID INT PRIMARY KEY AUTO_INCREMENT,
     newBarcode VARCHAR(255) UNIQUE NOT NULL,
@@ -55,7 +54,6 @@ CREATE TABLE ItemCopy (
     itemID INT,
     FOREIGN KEY (itemID) REFERENCES Item(itemID)
 );
-
 
 CREATE TABLE Loan (
     loanID INT PRIMARY KEY AUTO_INCREMENT,

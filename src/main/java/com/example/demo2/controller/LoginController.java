@@ -1,7 +1,7 @@
 package com.example.demo2.controller;
 
 import com.example.demo2.NavigationService;
-import com.example.demo2.UserDao;
+import com.example.demo2.Dao.UserDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
