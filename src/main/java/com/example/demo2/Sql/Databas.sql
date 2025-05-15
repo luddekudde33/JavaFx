@@ -34,26 +34,27 @@ CREATE TABLE `User` (
 );
 
 -- ISBN lägg till beroende på hur vi gör
-CREATE TABLE Item (
-    itemID INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE Book (
+    bookID INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(255) NOT NULL,
     category VARCHAR(255) NOT NULL,
-    authorOrArtist VARCHAR(255),
+    author VARCHAR(255),
     publisher VARCHAR(255),
     barcode VARCHAR(255) NOT NULL,
     isbn VARCHAR(13) NOT NULL,
     physicalLocation VARCHAR(255) NOT NULL,
-    classification VARCHAR(255)
+    classification VARCHAR(255),
+    isAvailable BOOLEAN DEFAULT TRUE
 );
 
-CREATE TABLE ItemCopy (
-    copyID INT PRIMARY KEY AUTO_INCREMENT,
-    newBarcode VARCHAR(255) UNIQUE NOT NULL,
-    isAvailable BOOLEAN DEFAULT TRUE,
-    physicalLocation VARCHAR(255) NOT NULL,
-    itemID INT,
-    FOREIGN KEY (itemID) REFERENCES Item(itemID)
+CREATE TABLE Movie(
+    movieID INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    mainCharacter VARCHAR(255) NOT NULL,
+    barcode VARCHAR(255) NOT NULL,
+    physicalLocation VARCHAR(255) NOT NULL
 );
+
 
 CREATE TABLE Loan (
     loanID INT PRIMARY KEY AUTO_INCREMENT,
@@ -62,8 +63,7 @@ CREATE TABLE Loan (
     status INT NOT NULL,
     userID INT,
     copyID INT,
-    FOREIGN KEY (userID) REFERENCES User(userID),
-    FOREIGN KEY (copyID) REFERENCES ItemCopy(copyID)
+    FOREIGN KEY (userID) REFERENCES User(userID)
 );
 
 
@@ -100,16 +100,18 @@ INSERT INTO `User` (fullName, email, phoneNr, password, categoryID, addressID) V
 ('Erik Johansson', 'erik@example.com', '0702345678', 'Svejsan456', 2, 2),
 ('Lisa Andersson', 'lisa@example.com', '0703456789','fickintedelta789', 3, 3);
 
-INSERT INTO Item (title, category, authorOrArtist, publisher, barcode, isbn, physicalLocation, classification) VALUES
+INSERT INTO Book (title, category, author, publisher, barcode, isbn, physicalLocation, classification) VALUES
 ('1984', 'Book', 'George Orwell', 'Penguin', 'B001', '0151010269', 'Shelf A1', '823.912'),
 ('Introduction to Algorithms', 'CourseLiterature', 'Cormen et al.', 'MIT Press', 'B002', '9780262033848', 'Shelf B2', '005.1'),
 ('Inception', 'DVD', 'Christopher Nolan', 'Warner Bros.', 'D001', '000', 'DVD Shelf', '791.43');
+INSERT INTO Movie (title, mainCharacter, barcode, physicalLocation) VALUES
+                                                                        ('The Matrix',        'Neo',              '1234567890123', 'Shelf A1'),
+                                                                        ('Inception',         'Dom Cobb',         '2345678901234', 'Shelf B2'),
+                                                                        ('The Godfather',     'Michael Corleone', '3456789012345', 'Shelf C3'),
+                                                                        ('Interstellar',      'Cooper',           '4567890123456', 'Shelf D4'),
+                                                                        ('Forrest Gump',      'Forrest Gump',     '5678901234567', 'Shelf E5');
 
 
-INSERT INTO ItemCopy (newBarcode, isAvailable, physicalLocation, itemID) VALUES
-('B001-1', TRUE, 'Shelf A1', 1),
-('B002-1', TRUE, 'Shelf B2', 2),
-('D001-1', FALSE, 'DVD Shelf', 3);
 
 
 INSERT INTO Loan (loanDate, dueDate, status, userID, copyID) VALUES
