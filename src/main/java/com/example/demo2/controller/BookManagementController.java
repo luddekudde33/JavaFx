@@ -62,7 +62,7 @@ public class BookManagementController {
         dialog.getDialogPane().setContent(grid);
 
         dialog.setResultConverter(btn -> btn == addBtn
-                ? new Book(0, titleF.getText(), null, authorF.getText(), null, bcF.getText(), null, locF.getText(), true)
+                ? new Book(0, titleF.getText(), null, authorF.getText(), null, bcF.getText(),"ISBN", locF.getText(), null, 1)
                 : null);
 
         Optional<Book> res = dialog.showAndWait();

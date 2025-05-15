@@ -7,24 +7,24 @@ public class Book {
     private String author;
     private String publisher;
     private String barcode;
-    private String classification;
+    private String isbn;
     private String physicalLocation;
-    private boolean isAvailable;
+    private String classification;
+    private int isAvailable;
 
     public Book() { }
 
-    public Book(int bookId, String title, String category,
-                String author, String publisher,
-                String barcode, String classification,
-                String physicalLocation, boolean isAvailable) {
+    public Book(int bookId, String title, String category, String author, String publisher, String barcode, String isbn, 
+    		String physicalLocation, String classification, int isAvailable) {
         this.bookId = bookId;
         this.title = title;
         this.category = category;
         this.author = author;
         this.publisher = publisher;
         this.barcode = barcode;
-        this.classification = classification;
+        this.isbn = isbn;
         this.physicalLocation = physicalLocation;
+        this.classification = classification;
         this.isAvailable = isAvailable;
     }
 
@@ -40,11 +40,13 @@ public class Book {
     public void setPublisher(String publisher) { this.publisher = publisher; }
     public String getBarcode() { return barcode; }
     public void setBarcode(String barcode) { this.barcode = barcode; }
-    public String getClassification() { return classification; }
-    public void setClassification(String classification) { this.classification = classification; }
+    public String getIsbn() { return isbn; }
+    public void setIsbn(String isbn) { this.isbn = isbn; }
     public String getPhysicalLocation() { return physicalLocation; }
     public void setPhysicalLocation(String physicalLocation) { this.physicalLocation = physicalLocation; }
-    public boolean isAvailable() { return isAvailable; }
-    public void setAvailable(boolean available) { isAvailable = available; }
+    public String getClassification() { return classification; }
+    public void setClassification(String classification) { this.classification = classification; }
+    public int getAvailable() { return isAvailable; }
+    public void setAvailable(int available) { isAvailable = available; }
 }
 

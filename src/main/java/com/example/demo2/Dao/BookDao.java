@@ -15,15 +15,16 @@ public class BookDao {
              ResultSet rs = st.executeQuery(sql)) {
             while (rs.next()) {
                 list.add(new Book(
-                        rs.getInt("bookID"),
-                        rs.getString("title"),
-                        rs.getString("category"),
-                        rs.getString("author"),
-                        rs.getString("publisher"),
-                        rs.getString("barcode"),
-                        rs.getString("classification"),
-                        rs.getString("physicalLocation"),
-                        rs.getBoolean("isAvailable")
+                		rs.getInt("bookID"),
+						rs.getString("title"),
+						rs.getString("category"),
+						rs.getString("author"),
+						rs.getString("publisher"),
+						rs.getString("barcode"),
+						rs.getString("isbn"),
+						rs.getString("physicalLocation"),
+						rs.getString("classification"),
+						rs.getInt("isAvailable")
                 ));
             }
         } catch (SQLException e) {
@@ -43,7 +44,7 @@ public class BookDao {
             ps.setString(5, book.getBarcode());
             ps.setString(6, book.getClassification());
             ps.setString(7, book.getPhysicalLocation());
-            ps.setBoolean(8, book.isAvailable());
+            ps.setInt(8, book.getAvailable());
             return ps.executeUpdate() == 1;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -62,7 +63,7 @@ public class BookDao {
             ps.setString(5, book.getBarcode());
             ps.setString(6, book.getClassification());
             ps.setString(7, book.getPhysicalLocation());
-            ps.setBoolean(8, book.isAvailable());
+            ps.setInt(8, book.getAvailable());
             ps.setInt(9, book.getBookId());
             return ps.executeUpdate() == 1;
         } catch (SQLException e) {

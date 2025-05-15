@@ -33,7 +33,6 @@ CREATE TABLE `User` (
     FOREIGN KEY (addressID) REFERENCES Address(addressID)
 );
 
--- ISBN lägg till beroende på hur vi gör
 CREATE TABLE Book (
     bookID INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(255) NOT NULL,
@@ -44,7 +43,7 @@ CREATE TABLE Book (
     isbn VARCHAR(13) NOT NULL,
     physicalLocation VARCHAR(255) NOT NULL,
     classification VARCHAR(255),
-    isAvailable BOOLEAN DEFAULT TRUE
+    isAvailable INT DEFAULT 1
 );
 
 CREATE TABLE Movie(
@@ -99,10 +98,10 @@ INSERT INTO `User` (fullName, email, phoneNr, password, categoryID, addressID) V
 ('Erik Johansson', 'erik@example.com', '0702345678', 'Svejsan456', 2, 2),
 ('Lisa Andersson', 'lisa@example.com', '0703456789','fickintedelta789', 3, 3);
 
-INSERT INTO Book (title, category, author, publisher, barcode, isbn, physicalLocation, classification) VALUES
-('1984', 'Book', 'George Orwell', 'Penguin', 'B001', '0151010269', 'Shelf A1', '823.912'),
-('Introduction to Algorithms', 'CourseLiterature', 'Cormen et al.', 'MIT Press', 'B002', '9780262033848', 'Shelf B2', '005.1'),
-('Inception', 'DVD', 'Christopher Nolan', 'Warner Bros.', 'D001', '000', 'DVD Shelf', '791.43');
+INSERT INTO Book (title, category, author, publisher, barcode, isbn, physicalLocation, classification, isAvailable) VALUES
+('1984', 'Book', 'George Orwell', 'Penguin', 'B001', '0151010269', 'Shelf A1', '823.912', 1),
+('Introduction to Algorithms', 'CourseLiterature', 'Cormen et al.', 'MIT Press', 'B002', '9780262033848', 'Shelf B2', '005.1', 2),
+('Inception', 'Book', 'Christopher Nolan', 'Warner Bros.', 'D001', '000', 'Shelf B2', '791.43', 2);
 INSERT INTO Movie (title, mainCharacter, barcode, physicalLocation) VALUES
                                                                         ('The Matrix',        'Neo',              '1234567890123', 'Shelf A1'),
                                                                         ('Inception',         'Dom Cobb',         '2345678901234', 'Shelf B2'),
