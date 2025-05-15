@@ -23,7 +23,9 @@
             <Label text="Välkommen till Biblioteks-appen! (Snabbväg för att testa olika funktioner)" styleClass="header-label"/>
             <HBox spacing="10" alignment="CENTER">
                 <Button text="← Tillbaka"  onAction="#goBack" />
-                <Button text="Gå till Item Maneger" onAction="#onGoToManeger"/>
+                <Button text="Gå till Movie Maneger" onAction="#onGoToMovieManeger"/>
+                <Button text="Manage Books" onAction="#onGoToManageBooks"/>
+
             </HBox>
         </VBox>
 

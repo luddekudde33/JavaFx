@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.controller.BookManagementController">
+    <children>
+        <TableView fx:id="bookTable" prefWidth="600" prefHeight="400">
+            <columns>
+                <TableColumn fx:id="colId" text="ID"/>
+                <TableColumn fx:id="colTitle" text="Titel"/>
+                <TableColumn fx:id="colAuthor" text="Författare"/>
+                <TableColumn fx:id="colBarcode" text="Streckkod"/>
+                <TableColumn fx:id="colLocation" text="Plats"/>
+            </columns>
+        </TableView>
+        <Button text="Lägg till bok" onAction="#onAddBook" layoutX="620" layoutY="50"/>
+        <Button text="Redigera bok" onAction="#onEditBook" layoutX="620" layoutY="100"/>
+        <Button text="Ta bort bok" onAction="#onDeleteBook" layoutX="620" layoutY="150"/>
+        <Button text="← Tillbaka"  onAction="#goBack" layoutX="620" layoutY="200"/>
+    </children>
+</AnchorPane>

@@ -8,7 +8,10 @@ public class MainStaffLoginController {
         NavigationService.goBack();
     }
 
-    public void onGoToManeger(ActionEvent actionEvent) {
-        NavigationService.navigateTo("ItemManagementView.fxml");
+    public void onGoToMovieManeger(ActionEvent actionEvent) {
+        NavigationService.navigateTo("MovieManagementView.fxml");
+    }
+    public void onGoToManageBooks(ActionEvent actionEvent) {
+        NavigationService.navigateTo("BookManagementView.fxml");
     }
 }
