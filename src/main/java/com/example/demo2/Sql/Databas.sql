@@ -82,7 +82,6 @@ CREATE TABLE Staff (
     staffPassword   VARCHAR(255) NOT NULL
 );
 
-
 -- TestData
 
 INSERT INTO UserCategory (categoryName, maxLoans, loanPeriodBooks, loanPeriodCourseLit, loanPeriodDVDs) VALUES
