@@ -14,7 +14,7 @@ public class Book {
 
     public Book() { }
 
-    public Book(int bookId, String title, String category, String author, String publisher, String barcode, String isbn, 
+    public Book(int bookId, String title, String category, String author, String publisher, String barcode, String isbn,
     		String physicalLocation, String classification, int isAvailable) {
         this.bookId = bookId;
         this.title = title;
@@ -46,7 +46,7 @@ public class Book {
     public void setPhysicalLocation(String physicalLocation) { this.physicalLocation = physicalLocation; }
     public String getClassification() { return classification; }
     public void setClassification(String classification) { this.classification = classification; }
-    public int getAvailable() { return isAvailable; }
-    public void setAvailable(int available) { isAvailable = available; }
+    public int getIsAvailable() { return isAvailable; }
+    public void setIsAvailable(int available) { isAvailable = available; }
 }
 

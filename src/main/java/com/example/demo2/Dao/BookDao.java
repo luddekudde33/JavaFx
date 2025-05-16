@@ -34,7 +34,7 @@ public class BookDao {
     }
 
     public boolean addBook(Book book) {
-        String sql = "INSERT INTO Book(title, category, author, publisher, barcode, classification, physicalLocation, isAvailable) VALUES(?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO Book(title, category, author, publisher, barcode, isbn, classification, physicalLocation, isAvailable) VALUES(?,?,?,?,?,?,?,?)";
         try (Connection conn = DbUtil.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, book.getTitle());
@@ -42,9 +42,10 @@ public class BookDao {
             ps.setString(3, book.getAuthor());
             ps.setString(4, book.getPublisher());
             ps.setString(5, book.getBarcode());
-            ps.setString(6, book.getClassification());
-            ps.setString(7, book.getPhysicalLocation());
-            ps.setInt(8, book.getAvailable());
+            ps.setString(6, book.getIsbn());
+            ps.setString(7, book.getClassification());
+            ps.setString(8, book.getPhysicalLocation());
+            ps.setInt(9, book.getIsAvailable());
             return ps.executeUpdate() == 1;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -53,7 +54,7 @@ public class BookDao {
     }
 
     public boolean updateBook(Book book) {
-        String sql = "UPDATE Book SET title=?, category=?, author=?, publisher=?, barcode=?, classification=?, physicalLocation=?, isAvailable=? WHERE bookID=?";
+        String sql = "UPDATE Book SET title=?, category=?, author=?, publisher=?, barcode=?, isbn=?, classification=?, physicalLocation=?, isAvailable=? WHERE bookID=?";
         try (Connection conn = DbUtil.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, book.getTitle());
@@ -61,10 +62,11 @@ public class BookDao {
             ps.setString(3, book.getAuthor());
             ps.setString(4, book.getPublisher());
             ps.setString(5, book.getBarcode());
-            ps.setString(6, book.getClassification());
-            ps.setString(7, book.getPhysicalLocation());
-            ps.setInt(8, book.getAvailable());
-            ps.setInt(9, book.getBookId());
+            ps.setString(6, book.getIsbn());
+            ps.setString(7, book.getClassification());
+            ps.setString(8, book.getPhysicalLocation());
+            ps.setInt(9, book.getIsAvailable());
+            ps.setInt(10, book.getBookId());
             return ps.executeUpdate() == 1;
         } catch (SQLException e) {
             e.printStackTrace();

@@ -2,7 +2,6 @@ package com.example.demo2.controller;
 
 import com.example.demo2.Model.Book;
 import com.example.demo2.Dao.BookDao;
-import com.example.demo2.NavigationService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.geometry.Insets;
 import javafx.scene.layout.GridPane;
+import com.example.demo2.NavigationService;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +21,8 @@ public class BookManagementController {
     @FXML private TableColumn<Book, String> colTitle;
     @FXML private TableColumn<Book, String> colAuthor;
     @FXML private TableColumn<Book, String> colBarcode;
+    @FXML private TableColumn<Book, String> colISBN;
+    @FXML private TableColumn<Book, Integer> colAvailable;
     @FXML private TableColumn<Book, String> colLocation;
 
     private final BookDao bookDao = new BookDao();
@@ -32,6 +34,8 @@ public class BookManagementController {
         colTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
         colAuthor.setCellValueFactory(new PropertyValueFactory<>("author"));
         colBarcode.setCellValueFactory(new PropertyValueFactory<>("barcode"));
+        colISBN.setCellValueFactory(new PropertyValueFactory<>("isbn"));
+        colAvailable.setCellValueFactory(new PropertyValueFactory<>("isAvailable"));
         colLocation.setCellValueFactory(new PropertyValueFactory<>("physicalLocation"));
         bookTable.setItems(data);
         loadBooks();
@@ -50,20 +54,46 @@ public class BookManagementController {
         dialog.getDialogPane().getButtonTypes().addAll(addBtn, ButtonType.CANCEL);
 
         GridPane grid = new GridPane();
-        grid.setHgap(10); grid.setVgap(10); grid.setPadding(new Insets(20));
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20));
+
         TextField titleF = new TextField();
-        TextField authorF= new TextField();
-        TextField bcF    = new TextField();
-        TextField locF   = new TextField();
+        TextField authorF = new TextField();
+        TextField bcF = new TextField();
+        TextField isbnF = new TextField();
+        TextField countF = new TextField();
+        countF.setPromptText("Antal");
+        TextField locF = new TextField();
+
         grid.addRow(0, new Label("Titel:"), titleF);
         grid.addRow(1, new Label("Författare:"), authorF);
         grid.addRow(2, new Label("Streckkod:"), bcF);
-        grid.addRow(3, new Label("Plats:"), locF);
+        grid.addRow(3, new Label("ISBN:"), isbnF);
+        grid.addRow(4, new Label("Antal:"), countF);
+        grid.addRow(5, new Label("Plats:"), locF);
         dialog.getDialogPane().setContent(grid);
 
-        dialog.setResultConverter(btn -> btn == addBtn
-                ? new Book(0, titleF.getText(), null, authorF.getText(), null, bcF.getText(),"ISBN", locF.getText(), null, 1)
-                : null);
+        dialog.setResultConverter(btn -> {
+            if (btn == addBtn) {
+                int antal;
+                try { antal = Integer.parseInt(countF.getText()); }
+                catch (NumberFormatException ex) { antal = 0; }
+                return new Book(
+                        0,
+                        titleF.getText(),
+                        null,
+                        authorF.getText(),
+                        null,
+                        bcF.getText(),
+                        isbnF.getText(),
+                        null,
+                        locF.getText(),
+                        antal
+                );
+            }
+            return null;
+        });
 
         Optional<Book> res = dialog.showAndWait();
         res.ifPresent(book -> {
@@ -85,15 +115,23 @@ public class BookManagementController {
         dialog.getDialogPane().getButtonTypes().addAll(updBtn, ButtonType.CANCEL);
 
         GridPane grid = new GridPane();
-        grid.setHgap(10); grid.setVgap(10); grid.setPadding(new Insets(20));
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20));
+
         TextField titleF = new TextField(sel.getTitle());
-        TextField authorF= new TextField(sel.getAuthor());
-        TextField bcF    = new TextField(sel.getBarcode());
-        TextField locF   = new TextField(sel.getPhysicalLocation());
+        TextField authorF = new TextField(sel.getAuthor());
+        TextField bcF = new TextField(sel.getBarcode());
+        TextField isbnF = new TextField(sel.getIsbn());
+        TextField countF = new TextField(String.valueOf(sel.getIsAvailable()));
+        TextField locF = new TextField(sel.getPhysicalLocation());
+
         grid.addRow(0, new Label("Titel:"), titleF);
         grid.addRow(1, new Label("Författare:"), authorF);
         grid.addRow(2, new Label("Streckkod:"), bcF);
-        grid.addRow(3, new Label("Plats:"), locF);
+        grid.addRow(3, new Label("ISBN:"), isbnF);
+        grid.addRow(4, new Label("Antal:"), countF);
+        grid.addRow(5, new Label("Plats:"), locF);
         dialog.getDialogPane().setContent(grid);
 
         dialog.setResultConverter(btn -> {
@@ -101,6 +139,9 @@ public class BookManagementController {
                 sel.setTitle(titleF.getText());
                 sel.setAuthor(authorF.getText());
                 sel.setBarcode(bcF.getText());
+                sel.setIsbn(isbnF.getText());
+                try { sel.setIsAvailable(Integer.parseInt(countF.getText())); }
+                catch (NumberFormatException ex) { sel.setIsAvailable(0); }
                 sel.setPhysicalLocation(locF.getText());
                 return sel;
             }

@@ -9,6 +9,8 @@
                 <TableColumn fx:id="colTitle" text="Titel"/>
                 <TableColumn fx:id="colAuthor" text="Författare"/>
                 <TableColumn fx:id="colBarcode" text="Streckkod"/>
+                <TableColumn fx:id="colISBN" text="ISBN"/>
+                <TableColumn fx:id="colAvailable" text="Tillgänglig"/>
                 <TableColumn fx:id="colLocation" text="Plats"/>
             </columns>
         </TableView>
