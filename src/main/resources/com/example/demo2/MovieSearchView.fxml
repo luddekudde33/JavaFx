@@ -1,93 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/23.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.demo2.controller.MovieSearchController"
-            prefWidth="600.0" prefHeight="400.0"
-            stylesheets="@style.css">
-    <children>
+<BorderPane stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.controller.MovieSearchController">
 
-        <MenuBar AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+
+    <top>
+        <MenuBar>
             <menus>
                 <Menu text="Start">
                     <items>
-                        <MenuItem text="Framsida" onAction="#onGoToStart"/>
+                        <MenuItem onAction="#onGoToStart" text="Framsida" />
                     </items>
                 </Menu>
                 <Menu text="Sökning">
                     <items>
-                        <MenuItem text="Böcker" onAction="#onGoToBookSearch"/>
-                        <MenuItem text="Filmer" />
+                        <MenuItem onAction="#onGoToBookSearch" text="Böcker" />
+                        <MenuItem text="Böcker" />
                     </items>
                 </Menu>
                 <Menu text="Profil">
                     <items>
-                        <MenuItem text="Min profilsida" onAction="#onGotoProfile"/>
-                        <MenuItem text="Logga in" onAction="#onGoToLogin"/>
-                        <MenuItem text="Skapa profil" onAction="#onGoToRegister"/>
+                        <MenuItem text="Min profilsida" />
+                        <MenuItem onAction="#onGoToLogin" text="Logga in" />
                     </items>
                 </Menu>
                 <Menu text="Hjälp">
                     <items>
-                        <MenuItem text="Om oss" onAction="#onGoToAbout"/>
+                        <MenuItem text="Om" />
                     </items>
                 </Menu>
             </menus>
         </MenuBar>
+    </top>
 
 
-        <VBox spacing="15" AnchorPane.topAnchor="30.0" AnchorPane.leftAnchor="20.0"
-              AnchorPane.rightAnchor="20.0" AnchorPane.bottomAnchor="20.0">
+    <center>
+        <VBox prefHeight="500.0" prefWidth="800.0" spacing="15">
+            <padding>
+                <Insets bottom="20" left="20" right="20" top="20" />
+            </padding>
 
-            <Label text="Sök Filmer" styleClass="header-label"/>
+            <Label styleClass="header-label" text="Välkommen till bibliotekets söktjänst för filmer!" />
 
 
             <GridPane hgap="10" vgap="10">
                 <columnConstraints>
-                    <ColumnConstraints percentWidth="25"/>
-                    <ColumnConstraints percentWidth="75"/>
+                    <ColumnConstraints percentWidth="25" />
+                    <ColumnConstraints percentWidth="75" />
                 </columnConstraints>
                 <rowConstraints>
-                    <RowConstraints minHeight="30"/>
-                    <RowConstraints minHeight="30"/>
-                    <RowConstraints minHeight="30"/>
-                    <RowConstraints minHeight="30"/>
-                    <RowConstraints minHeight="30"/>
+                    <RowConstraints minHeight="30" />
+                    <RowConstraints minHeight="30" />
+                    <RowConstraints minHeight="30" />
+                    <RowConstraints minHeight="30" />
                 </rowConstraints>
 
-                <Label text="Titel:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-                <TextField fx:id="titleField" promptText="Ange titel..." GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Label text="Titel:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <TextField fx:id="titleField" promptText="Ange titel..." GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
-                <Label text="Regissör:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-                <TextField fx:id="directorField" promptText="Ange regissör..." GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Label prefHeight="17.0" prefWidth="110.0" text="Huvudkaraktär:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <TextField fx:id="mainCharacterField" promptText="Ange huvudkaraktär" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-                <Label text="Skådespelare:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-                <TextField fx:id="actorField" promptText="Ange skådespelare..." GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Label text="Typ av media:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <ChoiceBox fx:id="mediaTypeBox" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
-                <Label text="Genre:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-                <ChoiceBox fx:id="genreBox" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
-
-                <CheckBox fx:id="availableOnlyCB" text="Visa endast tillgängliga exemplar" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                <CheckBox fx:id="availableOnlyCB" text="Visa endast tillgängliga exemplar" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             </GridPane>
 
 
             <HBox alignment="CENTER_RIGHT">
-                <Button fx:id="searchButton" text="Sök" styleClass="primary-button"/>
+                <Button fx:id="searchButton" onAction="#doSearchMovie" styleClass="primary-button" text="Sök" />
             </HBox>
-
+            <!--                        onAction="#onSearch"-->
 
             <TableView fx:id="tableView" prefHeight="300">
                 <columns>
-                    <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
-                    <TableColumn fx:id="colTitle" text="Titel" prefWidth="200"/>
-                    <TableColumn fx:id="colDirector" text="Regissör" prefWidth="150"/>
-                    <TableColumn fx:id="colGenre" text="Genre" prefWidth="100"/>
-                    <TableColumn fx:id="colAvailable" text="Tillgänglig" prefWidth="80"/>
+                    <TableColumn fx:id="colTitle" prefWidth="281.0" text="Titel" />
+                    <TableColumn fx:id="colMainCharacter" prefWidth="214.0" text="Huvudkarraktär" />
+                    <TableColumn fx:id="colCategory" prefWidth="92.0" text="Kategori" />
+                    <TableColumn fx:id="colAvailable" prefWidth="89.0" text="Tillgänglig" />
+               <TableColumn fx:id="colPhysicalLocation" prefWidth="83.0" text="Placering" />
                 </columns>
             </TableView>
         </VBox>
-    </children>
-</AnchorPane>
+    </center>
+</BorderPane>

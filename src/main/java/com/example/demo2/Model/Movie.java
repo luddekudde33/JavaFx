@@ -6,16 +6,20 @@ public class Movie {
     private String mainCharacter;
     private String barcode;
     private String physicalLocation;
+    private String category;
+    private int isAvailable;
 
     public Movie() { }
 
     public Movie(int movieId, String title, String mainCharacter,
-                 String barcode, String physicalLocation) {
+                 String barcode, String physicalLocation, String category, int isAvailable) {
         this.movieId = movieId;
         this.title = title;
         this.mainCharacter = mainCharacter;
         this.barcode = barcode;
         this.physicalLocation = physicalLocation;
+        this.category = category;
+        this.isAvailable =isAvailable;
     }
 
     public int getMovieId() { return movieId; }
@@ -28,4 +32,8 @@ public class Movie {
     public void setBarcode(String barcode) { this.barcode = barcode; }
     public String getPhysicalLocation() { return physicalLocation; }
     public void setPhysicalLocation(String physicalLocation) { this.physicalLocation = physicalLocation; }
+	public String getCategory() {return category;}
+	public void setCategory(String category) {this.category = category;}
+	public int getIsAvailable() {return isAvailable;}
+	public void setIsAvailable(int isAvailable) {this.isAvailable = isAvailable;}
 }

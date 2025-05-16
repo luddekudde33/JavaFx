@@ -19,7 +19,9 @@ public class MovieDao {
                         rs.getString("title"),
                         rs.getString("mainCharacter"),
                         rs.getString("barcode"),
-                        rs.getString("physicalLocation")
+                        rs.getString("physicalLocation"),
+                        rs.getString("category"),
+                        rs.getInt("isAvailable")
                 ));
             }
         } catch (SQLException e) {

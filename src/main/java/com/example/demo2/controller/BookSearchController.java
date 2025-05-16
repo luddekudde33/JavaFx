@@ -65,7 +65,8 @@ public class BookSearchController {
 
     @FXML
     private void initialize() {
-    	mediaTypeBox.getItems().addAll("Bok", "Kurslitteratur", "DVD");
+    	mediaTypeBox.getItems().addAll("Alla", "Bok", "Kurslitteratur");
+    	mediaTypeBox.setValue("Alla");
     	
     	//Skapa kolumnerna
     	colISBN.setCellValueFactory(new PropertyValueFactory<>("isbn"));
@@ -107,7 +108,20 @@ public class BookSearchController {
 		
     	if (!titleField.getText().isEmpty() || !authorField.getText().isEmpty()) {
     		//Sökning där titel och författare ska likna och isbn helt överensstämma
-    		String sql = "SELECT * FROM Book WHERE title LIKE ? OR author LIKE ? OR isbn =? LIMIT 100";
+    		String sql = "SELECT * FROM Book WHERE (title LIKE ? OR author LIKE ? OR isbn =?) ";
+    		//Om "bara tillgängliga" är ikryssad läggs det till i sökningen
+    		if (availableOnlyCB.isSelected()) {
+    			sql += " AND isAvailable > 0";
+    		}
+    		//Om mediatyp är något annat än "Alla" läggs det till i sökningen
+    		if (!mediaTypeBox.getValue().equals("Alla")) {
+    			sql += " AND category = '" + mediaTypeBox.getValue() + "'";
+    		}
+    			
+    		sql += " LIMIT 100";
+    		
+    		
+    		
     		try (Connection conn = DbUtil.getConnection();
     			PreparedStatement ps = conn.prepareStatement(sql)) {
     			

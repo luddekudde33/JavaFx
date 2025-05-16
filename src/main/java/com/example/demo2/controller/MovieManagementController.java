@@ -64,7 +64,7 @@ public class MovieManagementController {
 
         dialog.setResultConverter(btn -> {
             if (btn == addBtn) {
-                return new Movie(0, titleF.getText(), mainF.getText(), bcF.getText(), locF.getText());
+                return new Movie(0, titleF.getText(), mainF.getText(), bcF.getText(), locF.getText(), "DVD", 1);
             }
             return null;
         });

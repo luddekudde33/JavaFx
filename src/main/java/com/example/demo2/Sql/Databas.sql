@@ -51,7 +51,9 @@ CREATE TABLE Movie(
     title VARCHAR(255) NOT NULL,
     mainCharacter VARCHAR(255) NOT NULL,
     barcode VARCHAR(255) NOT NULL,
-    physicalLocation VARCHAR(255) NOT NULL
+    physicalLocation VARCHAR(255) NOT NULL,
+    category VARCHAR(255) NOT NULL,
+    isAvailable INT DEFAULT 1
 );
 
 
@@ -99,15 +101,17 @@ INSERT INTO `User` (fullName, email, phoneNr, password, categoryID, addressID) V
 ('Lisa Andersson', 'lisa@example.com', '0703456789','fickintedelta789', 3, 3);
 
 INSERT INTO Book (title, category, author, publisher, barcode, isbn, physicalLocation, classification, isAvailable) VALUES
-('1984', 'Book', 'George Orwell', 'Penguin', 'B001', '0151010269', 'Shelf A1', '823.912', 1),
-('Introduction to Algorithms', 'CourseLiterature', 'Cormen et al.', 'MIT Press', 'B002', '9780262033848', 'Shelf B2', '005.1', 2),
-('Inception', 'Book', 'Christopher Nolan', 'Warner Bros.', 'D001', '000', 'Shelf B2', '791.43', 2);
-INSERT INTO Movie (title, mainCharacter, barcode, physicalLocation) VALUES
-                                                                        ('The Matrix',        'Neo',              '1234567890123', 'Shelf A1'),
-                                                                        ('Inception',         'Dom Cobb',         '2345678901234', 'Shelf B2'),
-                                                                        ('The Godfather',     'Michael Corleone', '3456789012345', 'Shelf C3'),
-                                                                        ('Interstellar',      'Cooper',           '4567890123456', 'Shelf D4'),
-                                                                        ('Forrest Gump',      'Forrest Gump',     '5678901234567', 'Shelf E5');
+('1984', 'Bok', 'George Orwell', 'Penguin', 'B001', '0151010269', 'Shelf A1', '823.912', 1),
+('Introduction to Algorithms', 'Kurslitteratur', 'Cormen et al.', 'MIT Press', 'B002', '9780262033848', 'Shelf B2', '005.1', 2),
+('Inception', 'Bok', 'Christopher Nolan', 'Warner Bros.', 'D001', '000', 'Shelf B2', '791.43', 0),
+('Java How to Program - Early Objects', 'Kurslitteratur', 'Deitel & Deitel', 'Pearson', '9781292223858', '1-292-22385-5', 'Shelf B2', '90000', 8); 
+
+INSERT INTO Movie (title, mainCharacter, barcode, physicalLocation, category, isAvailable) VALUES
+('The Matrix',        'Neo',              '1234567890123', 'Shelf A1', 'DVD', 1),
+('Inception',         'Dom Cobb',         '2345678901234', 'Shelf B2', 'DVD', 0),
+('The Godfather',     'Michael Corleone', '3456789012345', 'Shelf C3', 'Blu-ray', 2),
+('Interstellar',      'Cooper',           '4567890123456', 'Shelf D4', 'DVD', 1),
+('Forrest Gump',      'Forrest Gump',     '5678901234567', 'Shelf E5', 'Blu-ray', 1);
 
 
 
