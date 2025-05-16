@@ -72,7 +72,7 @@ public class BookSearchController {
     	colTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
     	colAuthor.setCellValueFactory(new PropertyValueFactory<>("author"));
     	colCategory.setCellValueFactory(new PropertyValueFactory<>("category"));
-    	colAvailable.setCellValueFactory(new PropertyValueFactory<>("available"));
+    	colAvailable.setCellValueFactory(new PropertyValueFactory<>("isAvailable"));
     	colPhysicalLocation.setCellValueFactory(new PropertyValueFactory<>("physicalLocation"));
     }
     	
@@ -102,11 +102,37 @@ public class BookSearchController {
         
     @FXML
     void doSearchBook(ActionEvent event) {
-    	if (!titleField.getText().isEmpty()) {
-    		String sql = "SELECT * FROM Book WHERE title = ? LIMIT 100";
+    	//Rensa tabellen från ev. tidigare sökresultat
+		tableView.getItems().clear();
+		
+    	if (!titleField.getText().isEmpty() || !authorField.getText().isEmpty()) {
+    		//Sökning där titel och författare ska likna och isbn helt överensstämma
+    		String sql = "SELECT * FROM Book WHERE title LIKE ? OR author LIKE ? OR isbn =? LIMIT 100";
     		try (Connection conn = DbUtil.getConnection();
     			PreparedStatement ps = conn.prepareStatement(sql)) {
-    			ps.setString(1, titleField.getText());
+    			
+    			// Borttrimning av ev. onödiga blanksteg och lägger till "wildcards" för LIKE-sökningarna. 
+    			//"Wildcard" läggs bara till om sökfältet innehåller någon text, eftersom tomma fält annars alltid ger oönskade svarsresultat.
+    			
+    		    String titleSearch = titleField.getText().trim();
+    		    if (!titleSearch.isEmpty()) {
+    		    	titleSearch = ("%" + titleSearch + "%");
+    		    }
+    		    
+    		    String authorSearch = authorField.getText().trim();
+    		    if (!authorSearch.isEmpty()) {
+    		    	authorSearch = ("%" + authorSearch + "%");
+    		    }
+    		    
+    		    String isbnSearch = isbnField.getText().trim();
+    		    if (!titleSearch.isEmpty()) {
+    		    	titleSearch = ("%" + titleSearch + "%");
+    		    }
+    		       		    
+    			ps.setString(1, titleSearch);
+    			ps.setString(2, authorSearch);
+    			ps.setString(3, isbnSearch);
+    			
     			try (ResultSet rs = ps.executeQuery()){
     				List<Book> books = new ArrayList<>();
     				while (rs.next()) {
@@ -125,6 +151,7 @@ public class BookSearchController {
     					
     					books.add(book);
     				}
+    				//Fyll på tabellen med aktuella resultat
     				tableView.getItems().setAll(books);
     			}
     			
