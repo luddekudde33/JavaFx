@@ -7,6 +7,7 @@ module com.example.demo2 {
 
 
     requires com.dlsc.formsfx;
+    requires java.desktop;
 
     opens com.example.demo2 to javafx.fxml;
     exports com.example.demo2;

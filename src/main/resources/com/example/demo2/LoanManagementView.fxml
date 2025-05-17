@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.controller.LoanManagementController">
+    <children>
+        <TableView fx:id="loanTable" prefWidth="800" prefHeight="400">
+            <columns>
+                <TableColumn fx:id="colLoanId" text="Lån-ID"/>
+                <TableColumn fx:id="colCopyId" text="Objekt-ID"/>
+                <TableColumn fx:id="colStatus" text="Status"/>
+                <TableColumn fx:id="colUserId" text="Användar-ID"/>
+                <TableColumn fx:id="colLoanDate" text="Lånat"/>
+                <TableColumn fx:id="colDueDate" text="Senast åter"/>
+                <TableColumn fx:id="colReturnDate" text="Återlämnat"/>
+            </columns>
+        </TableView>
+        <Button text="Låna objekt" onAction="#onLoanItem" layoutX="820" layoutY="50"/>
+        <Button text="Återlämna" onAction="#onReturnItem" layoutX="820" layoutY="100"/>
+    </children>
+</AnchorPane>

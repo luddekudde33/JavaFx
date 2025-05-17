@@ -23,13 +23,6 @@
                         <MenuItem text="Filmer" onAction="#onGoToMovieSearch"/>
                     </items>
                 </Menu>
-                <Menu text="Profil">
-                    <items>
-
-                        <MenuItem text="Logga in" onAction="#onGoToLogin"/>
-                        <MenuItem text="Skapa profil" onAction="#onGoToRegister"/>
-                    </items>
-                </Menu>
                 <Menu text="Hjälp">
                     <items>
                         <MenuItem text="Om oss" onAction="#onGoToAbout"/>
@@ -39,40 +32,16 @@
         </MenuBar>
 
 
-        <VBox spacing="10" AnchorPane.topAnchor="30" AnchorPane.leftAnchor="20"
-              AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="20">
-            <Label text="Min Profil" styleClass="header-label"/>
 
-            <GridPane hgap="10" vgap="10">
-                <columnConstraints>
-                    <ColumnConstraints percentWidth="30"/>
-                    <ColumnConstraints percentWidth="70"/>
-                </columnConstraints>
-                <padding>
-                    <Insets top="20" left="10" right="10" bottom="10"/>
-                </padding>
+            <TableView fx:id="profileLoanTable" prefWidth="800" prefHeight="400">
+                <columns>
+                    <TableColumn fx:id="colProfileLoanId"    text="Lån-ID"/>
+                    <TableColumn fx:id="colProfileCopyId"    text="Objekt-ID"/>
+                    <TableColumn fx:id="colProfileStatus"    text="Status"/>
+                    <TableColumn fx:id="colProfileLoanDate"  text="Lånat"/>
+                    <TableColumn fx:id="colProfileDueDate"   text="Åter senast"/>
+                </columns>
+            </TableView>
 
-                <Label text="Namn:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-                <Label fx:id="nameLabel" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-
-                <Label text="E-post:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-                <Label fx:id="emailLabel" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-
-                <Label text="Telefon:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-                <Label fx:id="phoneLabel" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
-
-                <Label text="Kategori:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-                <Label fx:id="categoryLabel" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
-
-                <Label text="Adress:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
-                <Label fx:id="addressLabel" wrapText="true" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
-            </GridPane>
-
-
-            <HBox spacing="10" alignment="CENTER_RIGHT">
-                <Button text="Redigera profil"  styleClass="primary-button"/>
-                <Button text="Logga ut" />
-            </HBox>
-        </VBox>
     </children>
 </AnchorPane>

@@ -91,6 +91,9 @@
 
             <HBox alignment="CENTER_RIGHT">
                 <Button fx:id="searchButton" onAction="#doSearchBook" styleClass="primary-button" text="Sök" />
+                <Button text="Låna bok"
+                        onAction="#onLoanBook"
+                        layoutX="620" layoutY="50"/>
             </HBox>
             <!--                        onAction="#onSearch"-->
 

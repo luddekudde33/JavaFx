@@ -1,7 +1,9 @@
 package com.example.demo2.controller;
 
+import com.example.demo2.Model.User;
 import com.example.demo2.NavigationService;
 import com.example.demo2.Dao.UserDao;
+import com.example.demo2.service.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -26,11 +28,16 @@ public class LoginController {
             return;
         }
 
-        if (userDao.authenticate(email, pwd)) {
+        User user = userDao.authenticate(email, pwd);
+        if (user != null) {
+            // Spara inloggad användare i sessionen
+            Session.setCurrentUser(user);
+
+            // Markera navigeringsservicen som inloggad
             NavigationService.setUserLoggedIn(true);
             switchToMainView();
         } else {
-            alert("Felaktig e‑postadress eller lösenord.");
+            alert("Felaktig e-postadress eller lösenord.");
         }
     }
 
