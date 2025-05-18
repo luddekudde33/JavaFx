@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/23.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.demo2.controller.ProfileController"
-            prefWidth="600.0" prefHeight="400.0"
-            stylesheets="@style.css">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.demo2.controller.ProfileController">
     <children>
-
         <MenuBar AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
             <menus>
                 <Menu text="Start">
@@ -30,20 +25,32 @@
                 </Menu>
             </menus>
         </MenuBar>
+        <VBox spacing="10" AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20"
+              AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="20">
 
-
-
-            <TableView fx:id="profileLoanTable" prefWidth="800" prefHeight="400">
+            <!-- Dina kolumner + tabell -->
+            <TableView fx:id="profileLoanTable" prefHeight="400">
                 <columns>
-                    <TableColumn fx:id="colProfileLoanId"    text="Lån-ID"/>
-<!--                    <TableColumn fx:id="colProfileCopyId"    text="Objekt-ID"/>-->
-                    <TableColumn fx:id="colProfileBookId" text="Book ID"/>
-                    <TableColumn fx:id="colProfileMovieId" text="Movie ID"/>
-                    <TableColumn fx:id="colProfileStatus"    text="Status"/>
-                    <TableColumn fx:id="colProfileLoanDate"  text="Lånat"/>
-                    <TableColumn fx:id="colProfileDueDate"   text="Åter senast"/>
+                    <TableColumn fx:id="colProfileLoanId"    text="Lån-ID" prefWidth="60"/>
+                    <TableColumn fx:id="colProfileBookTitle" text="Boktitel" prefWidth="160"/>
+                    <TableColumn fx:id="colProfileMovieTitle" text="Filmtitel" prefWidth="160"/>
+                    <TableColumn fx:id="colProfileStatus"    text="Status" prefWidth="80"/>
+                    <TableColumn fx:id="colProfileLoanDate"  text="Lånat" prefWidth="120"/>
+                    <TableColumn fx:id="colProfileDueDate"   text="Åter senast" prefWidth="120"/>
                 </columns>
             </TableView>
 
+            <!-- Aktionsknappar -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Button fx:id="returnBtn"
+                        text="Återlämna valt lån"
+                        onAction="#onReturnLoan"
+                        disable="true"/>
+                <Button fx:id="receiptBtn"
+                        text="Skriv ut kvitto"
+                        onAction="#onPrintReceipt"
+                        disable="true"/>
+            </HBox>
+        </VBox>
     </children>
 </AnchorPane>

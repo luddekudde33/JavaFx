@@ -37,4 +37,5 @@ public class StartController {
     public void onGoToStaffLoggin(ActionEvent actionEvent) {
         NavigationService.navigateTo("StaffLoginView.fxml");
     }
+
 }

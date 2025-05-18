@@ -208,11 +208,13 @@ public class MovieSearchController {
 		res.ifPresent(l -> {
 			if (loanDao.addLoan(l)) {
 				new Alert(Alert.AlertType.INFORMATION, "Film utlånad!").showAndWait();
+
 			} else {
 				new Alert(Alert.AlertType.ERROR, "Kunde ej låna film.").showAndWait();
 			}
 		});
 	}
+
 }
 
     

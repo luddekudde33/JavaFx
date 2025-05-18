@@ -34,46 +34,69 @@ public class LoanDao {
     }
 
     public List<Loan> getOverdueLoans() {
-        String sql = "SELECT loanID, userID, bookID, movieID, status, loanDate, dueDate FROM Loan WHERE dueDate < CURDATE() AND status = 1";
+        String sql = """
+        SELECT loanID, userID, bookID, movieID, status, loanDate, dueDate
+          FROM Loan
+         WHERE dueDate < CURDATE()
+           AND status = 1
+        """;
         List<Loan> list = new ArrayList<>();
         try (Connection conn = DbUtil.getConnection();
              Statement st = conn.createStatement();
              ResultSet rs = st.executeQuery(sql)) {
             while (rs.next()) {
-                list.add(new Loan(
-                        rs.getInt("loanID"),
-                        rs.getInt("userID"),
-                        rs.getObject("bookID") != null ? rs.getInt("bookID") : null,
-                        rs.getObject("movieID") != null ? rs.getInt("movieID") : null,
-                        rs.getInt("status"),
-                        rs.getDate("loanDate").toLocalDate(),
-                        rs.getDate("dueDate").toLocalDate()
-                ));
+                Loan loan = new Loan();                  // Använd tom konstruktor
+                loan.setLoanId(   rs.getInt("loanID"));
+                loan.setUserId(   rs.getInt("userID"));
+
+                int b = rs.getInt("bookID");
+                if (!rs.wasNull()) loan.setBookId(b);
+
+                int m = rs.getInt("movieID");
+                if (!rs.wasNull()) loan.setMovieId(m);
+
+                loan.setStatus(   rs.getInt("status"));
+                loan.setLoanDate( rs.getDate("loanDate").toLocalDate());
+                loan.setDueDate(  rs.getDate("dueDate").toLocalDate());
+                list.add(loan);
             }
-        } catch (SQLException e) { e.printStackTrace(); }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return list;
     }
 
     public List<Loan> getLoansByUser(int userId) {
-        String sql = "SELECT loanID, userID, bookID, movieID, status, loanDate, dueDate FROM Loan WHERE userID = ? AND status = 1";
+        String sql = "SELECT l.loanID, l.userID, l.bookID, b.title AS bookTitle, " +
+                "l.movieID, m.title AS movieTitle, l.status, l.loanDate, l.dueDate " +
+                "FROM Loan l " +
+                "LEFT JOIN Book b ON l.bookID = b.bookID " +
+                "LEFT JOIN Movie m ON l.movieID = m.movieID " +
+                "WHERE l.userID = ? AND l.status = 1";
         List<Loan> list = new ArrayList<>();
         try (Connection conn = DbUtil.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, userId);
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
-                    list.add(new Loan(
-                            rs.getInt("loanID"),
-                            rs.getInt("userID"),
-                            rs.getObject("bookID") != null ? rs.getInt("bookID") : null,
-                            rs.getObject("movieID") != null ? rs.getInt("movieID") : null,
-                            rs.getInt("status"),
-                            rs.getDate("loanDate").toLocalDate(),
-                            rs.getDate("dueDate").toLocalDate()
-                    ));
+                    Loan loan = new Loan();
+                    loan.setLoanId(rs.getInt("loanID"));
+                    loan.setUserId(rs.getInt("userID"));
+                    int bId = rs.getInt("bookID");
+                    if (!rs.wasNull()) loan.setBookId(bId);
+                    int mId = rs.getInt("movieID");
+                    if (!rs.wasNull()) loan.setMovieId(mId);
+                    loan.setBookTitle(rs.getString("bookTitle"));
+                    loan.setMovieTitle(rs.getString("movieTitle"));
+                    loan.setStatus(rs.getInt("status"));
+                    loan.setLoanDate(rs.getDate("loanDate").toLocalDate());
+                    loan.setDueDate(rs.getDate("dueDate").toLocalDate());
+                    list.add(loan);
                 }
             }
-        } catch (SQLException e) { e.printStackTrace(); }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return list;
     }
 }

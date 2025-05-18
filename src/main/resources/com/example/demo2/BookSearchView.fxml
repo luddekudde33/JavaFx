@@ -95,7 +95,6 @@
                         onAction="#onLoanBook"
                         layoutX="620" layoutY="50"/>
             </HBox>
-            <!--                        onAction="#onSearch"-->
 
             <TableView fx:id="tableView" prefHeight="300">
                 <columns>

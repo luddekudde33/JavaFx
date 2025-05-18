@@ -88,8 +88,8 @@
             <HBox alignment="CENTER_RIGHT">
                 <Button fx:id="searchButton" onAction="#doSearchMovie" styleClass="primary-button" text="Sök" />
                 <Button text="Låna film" onAction="#onLoanMovie" styleClass="primary-button"/>
+
             </HBox>
-            <!--                        onAction="#onSearch"-->
 
             <TableView fx:id="tableView" prefHeight="300">
                 <columns>
