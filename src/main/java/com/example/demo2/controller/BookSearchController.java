@@ -15,12 +15,15 @@ import com.example.demo2.NavigationService;
 import com.example.demo2.Model.Book;
 import com.example.demo2.Sql.DbUtil;
 
+import com.example.demo2.service.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
+
+
 
 public class BookSearchController {
     private final LoanDao loanDao = new LoanDao();
@@ -175,8 +178,12 @@ public class BookSearchController {
 			}
     	}
     }
-    @FXML
-    private void onLoanBook(ActionEvent e) {
+    @FXML private void onLoanBook(ActionEvent e) {
+        if (Session.getCurrentUser() == null) {
+            new Alert(Alert.AlertType.WARNING, "Du måste logga in först.").showAndWait();
+            NavigationService.navigateTo("LoginView.fxml");
+            return;
+        }
         Book sel = tableView.getSelectionModel().getSelectedItem();
         if (sel == null) {
             new Alert(Alert.AlertType.WARNING, "Välj en bok att låna.").showAndWait();
@@ -186,30 +193,28 @@ public class BookSearchController {
         dlg.setTitle("Låna bok");
         ButtonType loanBtn = new ButtonType("Låna", ButtonBar.ButtonData.OK_DONE);
         dlg.getDialogPane().getButtonTypes().addAll(loanBtn, ButtonType.CANCEL);
-
         GridPane grid = new GridPane();
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(20));
+        grid.setHgap(10); grid.setVgap(10); grid.setPadding(new Insets(20));
         TextField userIdF = new TextField(); userIdF.setPromptText("Användar-ID");
-        DatePicker duePicker = new DatePicker(LocalDate.now().plusWeeks(3));
+        DatePicker duePicker = new DatePicker(LocalDate.now().plusWeeks(2));
         grid.addRow(0, new Label("Användar-ID:"), userIdF);
         grid.addRow(1, new Label("Återlämning senast:"), duePicker);
         dlg.getDialogPane().setContent(grid);
 
-        dlg.setResultConverter(btnType -> {
-            if (btnType == loanBtn) {
+        dlg.setResultConverter(btn -> {
+            if (btn == loanBtn) {
                 Loan loan = new Loan();
+                loan.setBookId(sel.getBookId());
+                loan.setMovieId(null);
+                loan.setUserId(Integer.parseInt(userIdF.getText()));
                 loan.setLoanDate(LocalDate.now());
                 loan.setDueDate(duePicker.getValue());
                 loan.setStatus(1);
-                try { loan.setUserId(Integer.parseInt(userIdF.getText())); }
-                catch (NumberFormatException ex) { loan.setUserId(0); }
-                loan.setCopyId(sel.getBookId());
                 return loan;
             }
             return null;
         });
+
 
         Optional<Loan> result = dlg.showAndWait();
         result.ifPresent(loan -> {

@@ -4,27 +4,29 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import com.example.demo2.Model.Loan;
 import com.example.demo2.NavigationService;
+import com.example.demo2.Dao.LoanDao;
 import com.example.demo2.Model.Movie;
 import com.example.demo2.Sql.DbUtil;
 
+import com.example.demo2.service.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.geometry.Insets;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
 
 public class MovieSearchController {
-	
-    @FXML
+	private final LoanDao loanDao = new LoanDao();
+
+	@FXML
     private TextField titleField;
     
     @FXML
@@ -157,6 +159,60 @@ public class MovieSearchController {
 			}
     	}
     }
+	@FXML
+	private void onLoanMovie(ActionEvent e) {
+		if (Session.getCurrentUser() == null) {
+			new Alert(Alert.AlertType.WARNING, "Du måste logga in först.").showAndWait();
+			NavigationService.navigateTo("LoginView.fxml");
+			return;
+		}
+
+		Movie sel = tableView.getSelectionModel().getSelectedItem();
+		if (sel == null) {
+			new Alert(Alert.AlertType.WARNING, "Välj en film att låna.").showAndWait();
+			return;
+		}
+
+		Dialog<Loan> dlg = new Dialog<>();
+		dlg.setTitle("Låna film");
+		ButtonType loanBtn = new ButtonType("Låna", ButtonBar.ButtonData.OK_DONE);
+		dlg.getDialogPane().getButtonTypes().addAll(loanBtn, ButtonType.CANCEL);
+
+		GridPane grid = new GridPane();
+		grid.setHgap(10); grid.setVgap(10); grid.setPadding(new Insets(20));
+		TextField userIdF   = new TextField();  userIdF.setPromptText("Användar-ID");
+		DatePicker duePicker = new DatePicker(LocalDate.now().plusWeeks(2));
+		grid.addRow(0, new Label("Användar-ID:"),      userIdF);
+		grid.addRow(1, new Label("Återlämning senast:"), duePicker);
+		dlg.getDialogPane().setContent(grid);
+
+		dlg.setResultConverter(btn -> {
+			if (btn == loanBtn) {
+				Loan loan = new Loan();
+				loan.setBookId(null);
+				loan.setMovieId(sel.getMovieId());
+				try {
+					loan.setUserId(Integer.parseInt(userIdF.getText()));
+				} catch (NumberFormatException ex) {
+					loan.setUserId(0);
+				}
+				loan.setLoanDate(LocalDate.now());
+				loan.setDueDate(duePicker.getValue());
+				loan.setStatus(1);
+				return loan;
+			}
+			return null;
+		});
+
+		Optional<Loan> res = dlg.showAndWait();
+		res.ifPresent(l -> {
+			if (loanDao.addLoan(l)) {
+				new Alert(Alert.AlertType.INFORMATION, "Film utlånad!").showAndWait();
+			} else {
+				new Alert(Alert.AlertType.ERROR, "Kunde ej låna film.").showAndWait();
+			}
+		});
+	}
 }
 
     

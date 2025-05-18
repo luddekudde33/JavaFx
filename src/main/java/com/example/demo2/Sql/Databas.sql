@@ -63,7 +63,10 @@ CREATE TABLE Loan (
     dueDate DATETIME NOT NULL,
     status INT NOT NULL,
     userID INT,
-    copyID INT,
+    bookID INT NULL,
+    movieID INT NULL,
+    FOREIGN KEY (bookID) REFERENCES Book(bookID),
+    FOREIGN KEY (movieID) REFERENCES Movie(movieID),
     FOREIGN KEY (userID) REFERENCES User(userID)
 );
 
@@ -115,11 +118,10 @@ INSERT INTO Movie (title, mainCharacter, barcode, physicalLocation, category, is
 
 
 
-
-INSERT INTO Loan (loanDate, dueDate, status, userID, copyID) VALUES
-(NOW(), DATE_ADD(NOW(), INTERVAL 21 DAY), 1, 1, 1),
-(NOW(), DATE_ADD(NOW(), INTERVAL 30 DAY), 1, 2, 2),
-(NOW(), DATE_ADD(NOW(), INTERVAL 7 DAY), 2, 3, 3); -- Status 2 = returned, t.ex.
+INSERT INTO Loan (loanDate, dueDate, status, userID, bookID, movieID) VALUES
+(NOW(), DATE_ADD(NOW(), INTERVAL 21 DAY), 1, 1, 1, NULL),
+(NOW(), DATE_ADD(NOW(), INTERVAL 30 DAY), 1, 2, NULL, 1),
+(NOW(), DATE_ADD(NOW(), INTERVAL 7 DAY), 2, 3, 2, NULL); -- Status 2 = returned, t.ex.
 
 
 INSERT INTO Reminder (reminderDate, loanID) VALUES

@@ -6,7 +6,9 @@
         <TableView fx:id="loanTable" prefWidth="800" prefHeight="400">
             <columns>
                 <TableColumn fx:id="colLoanId" text="Lån-ID"/>
-                <TableColumn fx:id="colCopyId" text="Objekt-ID"/>
+<!--                <TableColumn fx:id="colCopyId" text="Objekt-ID"/>-->
+                <TableColumn fx:id="colBookId" text="Book ID"/>
+                <TableColumn fx:id="colMovieId" text="Movie ID"/>
                 <TableColumn fx:id="colStatus" text="Status"/>
                 <TableColumn fx:id="colUserId" text="Användar-ID"/>
                 <TableColumn fx:id="colLoanDate" text="Lånat"/>

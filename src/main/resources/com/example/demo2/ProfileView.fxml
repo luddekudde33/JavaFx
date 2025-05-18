@@ -36,7 +36,9 @@
             <TableView fx:id="profileLoanTable" prefWidth="800" prefHeight="400">
                 <columns>
                     <TableColumn fx:id="colProfileLoanId"    text="Lån-ID"/>
-                    <TableColumn fx:id="colProfileCopyId"    text="Objekt-ID"/>
+<!--                    <TableColumn fx:id="colProfileCopyId"    text="Objekt-ID"/>-->
+                    <TableColumn fx:id="colProfileBookId" text="Book ID"/>
+                    <TableColumn fx:id="colProfileMovieId" text="Movie ID"/>
                     <TableColumn fx:id="colProfileStatus"    text="Status"/>
                     <TableColumn fx:id="colProfileLoanDate"  text="Lånat"/>
                     <TableColumn fx:id="colProfileDueDate"   text="Åter senast"/>

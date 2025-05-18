@@ -18,11 +18,14 @@ import java.util.Optional;
 public class LoanManagementController {
     @FXML private TableView<Loan> loanTable;
     @FXML private TableColumn<Loan, Integer> colLoanId;
-    @FXML private TableColumn<Loan, Integer> colCopyId;
+//    @FXML private TableColumn<Loan, Integer> colCopyId;
+    @FXML private TableColumn<Loan,Integer> colBookId;
+    @FXML private TableColumn<Loan,Integer> colMovieId;
     @FXML private TableColumn<Loan, Integer> colUserId;
     @FXML private TableColumn<Loan, Integer> colStatus;
     @FXML private TableColumn<Loan, LocalDate> colLoanDate;
     @FXML private TableColumn<Loan, LocalDate> colDueDate;
+
 
 
     private final LoanDao loanDao = new LoanDao();
@@ -30,7 +33,8 @@ public class LoanManagementController {
 
     @FXML public void initialize() {
         colLoanId.setCellValueFactory(new PropertyValueFactory<>("loanId"));
-        colCopyId.setCellValueFactory(new PropertyValueFactory<>("copyId"));
+        colBookId.setCellValueFactory(new PropertyValueFactory<>("bookId"));
+        colMovieId.setCellValueFactory(new PropertyValueFactory<>("movieId"));
         colUserId.setCellValueFactory(new PropertyValueFactory<>("userId"));
         colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
         colLoanDate.setCellValueFactory(new PropertyValueFactory<>("loanDate"));
@@ -66,10 +70,11 @@ public class LoanManagementController {
             if (btn == create) {
                 Loan loan = new Loan();
                 try {
-                    loan.setCopyId(Integer.parseInt(copyIdF.getText()));
+                    loan.setBookId(Integer.parseInt(copyIdF.getText()));
                 } catch (NumberFormatException ex) {
-                    loan.setCopyId(0);
+                    loan.setBookId(0);
                 }
+                loan.setMovieId(null);
                 try {
                     loan.setUserId(Integer.parseInt(userIdF.getText()));
                 } catch (NumberFormatException ex) {
@@ -96,7 +101,8 @@ public class LoanManagementController {
             new Alert(Alert.AlertType.WARNING, "Välj ett lån först.").showAndWait();
             return;
         }
-        boolean ok = loanDao.returnLoan(sel.getLoanId(), LocalDate.now());
-        if (ok) loadLoans(); else new Alert(Alert.AlertType.ERROR, "Kunde inte markera återlämnad.").showAndWait();
+        boolean ok = loanDao.returnLoan(sel.getLoanId());
+        if (ok) loadLoans();
+        else new Alert(Alert.AlertType.ERROR, "Kunde inte markera återlämnad.").showAndWait();
     }
 }
