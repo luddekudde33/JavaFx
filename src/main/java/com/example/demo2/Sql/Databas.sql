@@ -121,7 +121,9 @@ INSERT INTO Movie (title, mainCharacter, barcode, physicalLocation, category, is
 INSERT INTO Loan (loanDate, dueDate, status, userID, bookID, movieID) VALUES
 (NOW(), DATE_ADD(NOW(), INTERVAL 21 DAY), 1, 1, 1, NULL),
 (NOW(), DATE_ADD(NOW(), INTERVAL 30 DAY), 1, 2, NULL, 1),
-(NOW(), DATE_ADD(NOW(), INTERVAL 7 DAY), 2, 3, 2, NULL); -- Status 2 = returned, t.ex.
+(NOW(), DATE_ADD(NOW(), INTERVAL 7 DAY), 2, 3, 2, NULL),
+(NOW(), DATE_SUB(NOW(), INTERVAL 5 DAY), 1, 1, 1, NULL);
+-- Status 2 = returned, t.ex.
 
 
 INSERT INTO Reminder (reminderDate, loanID) VALUES

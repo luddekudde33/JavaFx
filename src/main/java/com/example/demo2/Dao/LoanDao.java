@@ -45,7 +45,7 @@ public class LoanDao {
              Statement st = conn.createStatement();
              ResultSet rs = st.executeQuery(sql)) {
             while (rs.next()) {
-                Loan loan = new Loan();                  // Använd tom konstruktor
+                Loan loan = new Loan();
                 loan.setLoanId(   rs.getInt("loanID"));
                 loan.setUserId(   rs.getInt("userID"));
 

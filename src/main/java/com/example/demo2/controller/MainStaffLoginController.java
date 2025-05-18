@@ -14,4 +14,8 @@ public class MainStaffLoginController {
     public void onGoToManageBooks(ActionEvent actionEvent) {
         NavigationService.navigateTo("BookManagementView.fxml");
     }
+
+    public void onGoToDelayd(ActionEvent actionEvent) {
+        NavigationService.navigateTo("LoanManagementView.fxml");
+    }
 }

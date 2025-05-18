@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.demo2.controller.LoanManagementController"
+            prefWidth="800" prefHeight="600">
+    <children>
+        <TableView fx:id="loanTable"
+                   AnchorPane.topAnchor="30"
+                   AnchorPane.leftAnchor="10"
+                   AnchorPane.rightAnchor="10"
+                   AnchorPane.bottomAnchor="10">
+            <columns>
+                <TableColumn fx:id="colLoanId"   text="Lån-ID"       prefWidth="60"/>
+                <TableColumn fx:id="colBookId"   text="Book ID"      prefWidth="80"/>
+                <TableColumn fx:id="colMovieId"  text="Movie ID"     prefWidth="80"/>
+                <TableColumn fx:id="colUserId"   text="User ID"      prefWidth="80"/>
+                <TableColumn fx:id="colStatus"   text="Status"       prefWidth="60"/>
+                <TableColumn fx:id="colLoanDate" text="Lånedatum"    prefWidth="120"/>
+                <TableColumn fx:id="colDueDate"  text="Åter senast"  prefWidth="120"/>
+            </columns>
+        </TableView>
+
+    </children>
+    <Button text="Tillbaka" onAction="#goBack"/>
+</AnchorPane>

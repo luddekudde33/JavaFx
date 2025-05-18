@@ -25,6 +25,7 @@
                 <Button text="← Tillbaka"  onAction="#goBack" />
                 <Button text="Gå till Movie Maneger" onAction="#onGoToMovieManeger"/>
                 <Button text="Manage Books" onAction="#onGoToManageBooks"/>
+                <Button text="Försenade lån" onAction="#onGoToDelayd"/>
 
             </HBox>
         </VBox>
